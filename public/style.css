@@ -150,6 +150,16 @@ body {
   font-family: 'Outfit', sans-serif;
 }
 
+.logo img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+  padding: 1px;
+}
+
 .logo span {
   background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
   -webkit-background-clip: text;

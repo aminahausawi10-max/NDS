@@ -1857,8 +1857,10 @@ select option {
 
 /* Home Service Button Styles (Matching User Diagram Size) */
 .home-service-button {
-  background: #ffffff !important;
-  border: 1px solid #ffdcd0 !important;
+  background: rgba(46, 204, 113, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(46, 204, 113, 0.2) !important;
   border-radius: var(--border-radius-md) !important;
   padding: 20px 16px !important;
   text-align: center;
@@ -1868,23 +1870,24 @@ select option {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(255, 106, 61, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   cursor: pointer;
   aspect-ratio: 1 / 1;
 }
 
 .home-service-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(224, 50, 0, 0.15);
-  border-color: #ff6a3d !important;
+  box-shadow: 0 8px 24px rgba(46, 204, 113, 0.25);
+  border-color: #2ecc71 !important;
+  background: rgba(46, 204, 113, 0.15) !important;
 }
 
 .home-service-icon-wrap {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #fff0eb;
-  color: #ff6a3d;
+  background: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -1894,13 +1897,13 @@ select option {
 }
 
 .home-service-button:hover .home-service-icon-wrap {
-  background: #ff6a3d;
+  background: #2ecc71;
   color: #ffffff;
 }
 
 .home-service-label {
   font-size: 13px;
   font-weight: 600;
-  color: #202a44 !important;
+  color: #ffffff !important;
   line-height: 1.3;
 }

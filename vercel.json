@@ -1,5 +1,57 @@
 {
-  "cleanUrls": true,
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/auth/login(\\.js)?",
+      "dest": "/api/auth/login.js"
+    },
+    {
+      "src": "/api/auth/register(\\.js)?",
+      "dest": "/api/auth/register.js"
+    },
+    {
+      "src": "/api/upload(\\.js)?",
+      "dest": "/api/upload.js"
+    },
+    {
+      "src": "/api/applications/create(\\.js)?",
+      "dest": "/api/applications/create.js"
+    },
+    {
+      "src": "/api/applications/track(\\.js)?",
+      "dest": "/api/applications/track.js"
+    },
+    {
+      "src": "/api/applications/list(\\.js)?",
+      "dest": "/api/applications/list.js"
+    },
+    {
+      "src": "/api/applications/message(\\.js)?",
+      "dest": "/api/applications/message.js"
+    },
+    {
+      "src": "/api/admin/dashboard(\\.js)?",
+      "dest": "/api/admin/dashboard.js"
+    },
+    {
+      "src": "/api/admin/update(\\.js)?",
+      "dest": "/api/admin/update.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

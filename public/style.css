@@ -1738,7 +1738,7 @@ select option {
 
 /* Mobile Portal Bottom Nav Bar */
 .portal-bottom-nav {
-  display: none;
+  display: none !important;
   background: rgba(11, 14, 18, 0.95);
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--glass-border);
@@ -1773,8 +1773,8 @@ select option {
 }
 
 @media (max-width: 768px) {
-  .portal-bottom-nav {
-    display: flex;
+  .portal-bottom-nav.active-view {
+    display: flex !important;
   }
   .portal-sidebar {
     display: none;

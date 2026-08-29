@@ -53,6 +53,6 @@ module.exports = async (req, res) => {
 
   } catch (err) {
     console.error('Login error:', err);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    return res.status(500).json({ error: 'Internal Server Error', details: err.message, stack: err.stack });
   }
 };

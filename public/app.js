@@ -408,7 +408,7 @@ async function handleLoginSubmit(event) {
   const password = document.getElementById('login-password').value;
   
   try {
-    const res = await fetch(`${API_BASE}/api/auth/login`, {
+    const res = await fetch(`${API_BASE}/api/auth/login.js`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -447,7 +447,7 @@ async function handleRegisterSubmit(event) {
   const password = document.getElementById('reg-password').value;
   
   try {
-    const res = await fetch(`${API_BASE}/api/auth/register`, {
+    const res = await fetch(`${API_BASE}/api/auth/register.js`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fullName, email, phone, country, stateOrigin, password })
@@ -537,7 +537,7 @@ async function handleApplySubmit(event) {
     const uploadedUrls = [];
     for (const file of selectedFiles) {
       const base64Data = await getBase64(file);
-      const uploadRes = await fetch(`${API_BASE}/api/upload`, {
+      const uploadRes = await fetch(`${API_BASE}/api/upload.js`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -555,7 +555,7 @@ async function handleApplySubmit(event) {
     const contactMethod = document.getElementById('apply-contact').value;
     const description = document.getElementById('apply-desc').value;
 
-    const res = await fetch(`${API_BASE}/api/applications/create`, {
+    const res = await fetch(`${API_BASE}/api/applications/create.js`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -609,7 +609,7 @@ async function searchTracking() {
   document.getElementById('track-not-found').style.display = 'none';
 
   try {
-    const res = await fetch(`${API_BASE}/api/applications/track?ref=${ref}`);
+    const res = await fetch(`${API_BASE}/api/applications/track.js?ref=${ref}`);
     const data = await res.json();
 
     if (!res.ok) {
@@ -693,7 +693,7 @@ async function handleSendTrackingMessage(event) {
   }
 
   try {
-    const res = await fetch(`${API_BASE}/api/applications/message`, {
+    const res = await fetch(`${API_BASE}/api/applications/message.js`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -738,7 +738,7 @@ async function loadPortalData() {
   document.getElementById('portal-user-name').innerText = currentUser.fullName;
 
   try {
-    const res = await fetch(`${API_BASE}/api/applications/list`, {
+    const res = await fetch(`${API_BASE}/api/applications/list.js`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -830,7 +830,7 @@ async function loadAdminDashboard() {
   }
 
   try {
-    const res = await fetch(`${API_BASE}/api/admin/dashboard`, {
+    const res = await fetch(`${API_BASE}/api/admin/dashboard.js`, {
       method: 'GET',
       headers: { 'Authorization': `Bearer ${authToken}` }
     });
@@ -956,7 +956,7 @@ async function handleAdminUpdate(event) {
   const messageText = document.getElementById('admin-update-message').value;
 
   try {
-    const res = await fetch(`${API_BASE}/api/admin/update`, {
+    const res = await fetch(`${API_BASE}/api/admin/update.js`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

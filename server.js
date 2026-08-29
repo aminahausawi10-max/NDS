@@ -26,25 +26,26 @@ const server = http.createServer((req, res) => {
   // 1. API Route handling
   if (pathname.startsWith('/api')) {
     // Standard Vercel API routing structure
+    const cleanPathname = pathname.endsWith('.js') ? pathname.slice(0, -3) : pathname;
     let modulePath = '';
     
-    if (pathname === '/api/auth/register') {
+    if (cleanPathname === '/api/auth/register') {
       modulePath = './api/auth/register.js';
-    } else if (pathname === '/api/auth/login') {
+    } else if (cleanPathname === '/api/auth/login') {
       modulePath = './api/auth/login.js';
-    } else if (pathname === '/api/applications/create') {
+    } else if (cleanPathname === '/api/applications/create') {
       modulePath = './api/applications/create.js';
-    } else if (pathname === '/api/applications/track') {
+    } else if (cleanPathname === '/api/applications/track') {
       modulePath = './api/applications/track.js';
-    } else if (pathname === '/api/applications/list') {
+    } else if (cleanPathname === '/api/applications/list') {
       modulePath = './api/applications/list.js';
-    } else if (pathname === '/api/applications/message') {
+    } else if (cleanPathname === '/api/applications/message') {
       modulePath = './api/applications/message.js';
-    } else if (pathname === '/api/admin/dashboard') {
+    } else if (cleanPathname === '/api/admin/dashboard') {
       modulePath = './api/admin/dashboard.js';
-    } else if (pathname === '/api/admin/update') {
+    } else if (cleanPathname === '/api/admin/update') {
       modulePath = './api/admin/update.js';
-    } else if (pathname === '/api/upload') {
+    } else if (cleanPathname === '/api/upload') {
       modulePath = './api/upload.js';
     }
 

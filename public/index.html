@@ -667,10 +667,75 @@
           
           <!-- Portal Sub-tab: Dashboard -->
           <div id="portal-tab-dashboard" class="portal-tab-content active">
-            <div class="welcome-banner glass-panel">
-              <h2 id="portal-welcome-msg">Welcome Back!</h2>
-              <p>You can manage and track all your documentation requests inside your secure portal.</p>
+            <!-- Balance Wallet Card (Matching Diagram Reference) -->
+            <div class="wallet-card-container">
+              <div class="wallet-card animate-zoom">
+                <div class="wallet-label-row">
+                  <span>Total Balance</span>
+                  <i class="fa-solid fa-wallet"></i>
+                </div>
+                <div class="wallet-balance-amt" id="wallet-balance-display">₦4,160.00</div>
+                <div class="wallet-actions-row">
+                  <button class="wallet-btn" onclick="alert('Fund Wallet simulation initialized! Connect payment gateway.')">
+                    <i class="fa-solid fa-plus-circle"></i> Fund Wallet
+                  </button>
+                  <button class="wallet-btn wallet-btn-secondary" onclick="alert('Expenses & Transaction logs are empty.')">
+                    <i class="fa-solid fa-receipt"></i> Expenses
+                  </button>
+                </div>
+              </div>
             </div>
+
+            <!-- All Services Section (Matching Diagram Grid Reference) -->
+            <div class="dashboard-title-row">
+              <i class="fa-solid fa-grip"></i>
+              <h4>All Services</h4>
+            </div>
+
+            <div class="quick-services-grid">
+              <a href="#apply?service=NIN%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-fingerprint"></i></div>
+                <span class="quick-service-label">NIN Search</span>
+              </a>
+              <a href="#apply?service=NIN%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-phone"></i></div>
+                <span class="quick-service-label">NIN by Phone</span>
+              </a>
+              <a href="#apply?service=NIN%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-users-viewfinder"></i></div>
+                <span class="quick-service-label">Search Demographic</span>
+              </a>
+              <a href="#apply?service=NIN%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-fingerprint"></i></div>
+                <span class="quick-service-label">NIN V2</span>
+              </a>
+              <a href="#apply?service=BVN%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-user-check"></i></div>
+                <span class="quick-service-label">BVN Verification</span>
+              </a>
+              <a href="#apply?service=BVN%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-id-card"></i></div>
+                <span class="quick-service-label">BVN Retrieval</span>
+              </a>
+              <a href="#apply?service=Passport%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-user-gear"></i></div>
+                <span class="quick-service-label">Personalization</span>
+              </a>
+              <a href="#apply?service=Police%20Clearance" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+                <span class="quick-service-label">IPE Clearance</span>
+              </a>
+              <a href="#apply?service=Police%20Clearance" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-circle-nodes"></i></div>
+                <span class="quick-service-label">MOD IPE Clearance</span>
+              </a>
+              <a href="#apply?service=Passport%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><i class="fa-solid fa-passport"></i></div>
+                <span class="quick-service-label">Passport Renewal</span>
+              </a>
+            </div>
+
+            <!-- Stat Info bubbles -->
             <div class="portal-stats-row">
               <div class="stat-bubble glass-panel">
                 <span class="num" id="portal-stat-total">0</span>
@@ -1025,6 +1090,22 @@
 
   <!-- Toast Notification System -->
   <div id="toast-container" class="toast-container"></div>
+
+  <!-- Mobile Bottom Navigation Bar (Matching Diagram Reference) -->
+  <div class="portal-bottom-nav">
+    <a href="#home" class="portal-bottom-nav-item">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="#contact" class="portal-bottom-nav-item">
+      <i class="fa-solid fa-circle-question"></i>
+      <span>Support</span>
+    </a>
+    <a href="javascript:void(0)" onclick="handleLogout()" class="portal-bottom-nav-item text-danger">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Logout</span>
+    </a>
+  </div>
 
   <!-- Core Javascript -->
   <script src="app.js"></script>

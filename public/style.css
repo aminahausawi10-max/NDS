@@ -1854,3 +1854,53 @@ select option {
     grid-template-columns: 1fr;
   }
 }
+
+/* Home Service Button Styles (Matching User Diagram Size) */
+.home-service-button {
+  background: #ffffff !important;
+  border: 1px solid #ffdcd0 !important;
+  border-radius: var(--border-radius-md) !important;
+  padding: 20px 16px !important;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(255, 106, 61, 0.05);
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+}
+
+.home-service-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(224, 50, 0, 0.15);
+  border-color: #ff6a3d !important;
+}
+
+.home-service-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff0eb;
+  color: #ff6a3d;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  transition: var(--transition-smooth);
+}
+
+.home-service-button:hover .home-service-icon-wrap {
+  background: #ff6a3d;
+  color: #ffffff;
+}
+
+.home-service-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #202a44 !important;
+  line-height: 1.3;
+}

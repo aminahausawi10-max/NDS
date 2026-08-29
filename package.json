@@ -1,0 +1,16 @@
+{
+  "name": "nds-website",
+  "version": "1.0.0",
+  "description": "Nigeria Diaspora Services (NDS) - Web Platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.5"
+  }
+}

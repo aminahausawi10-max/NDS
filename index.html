@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nigeria Diaspora Services (NDS) - Documentation Support & Assistance</title>
+  <!-- SEO Tags -->
+  <meta name="description" content="Professional documentation assistance for Nigerians living abroad. Apply for Passport renewals, NIN, BVN, CAC, authentication, and more.">
+  <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/nigeria-circular.png">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <!-- Dynamic Gradient Background & Background Blobs -->
+  <div class="bg-gradient-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <!-- Header & Navigation Shell -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#home" class="logo">
+        <img src="https://img.icons8.com/color/48/nigeria-circular.png" alt="NDS Flag logo">
+        <span>NDS</span>
+      </a>
+      
+      <!-- Primary Navigation Bar (Desktop) -->
+      <nav class="desktop-nav">
+        <a href="#home" class="nav-link active" data-key="nav-home">Home</a>
+        <a href="#about" class="nav-link" data-key="nav-about">About Us</a>
+        <a href="#services" class="nav-link" data-key="nav-services">Services</a>
+        <a href="#how-it-works" class="nav-link" data-key="nav-how">How It Works</a>
+        <a href="#track" class="nav-link" data-key="nav-track">Track Application</a>
+        <a href="#faq" class="nav-link" data-key="nav-faq">FAQ</a>
+        <a href="#contact" class="nav-link" data-key="nav-contact">Contact Us</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <div class="language-dropdown">
+          <button class="lang-btn btn-glass">
+            <i class="fa-solid fa-globe"></i> <span id="current-lang">EN</span> <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <button onclick="setLanguage('en')">English</button>
+            <button onclick="setLanguage('ha')">Hausa</button>
+            <button onclick="setLanguage('ar')">العربية</button>
+            <button onclick="setLanguage('fr')">Français</button>
+          </div>
+        </div>
+
+        <!-- Auth Button -->
+        <button id="auth-header-btn" onclick="openAuthModal()" class="btn-glass auth-trigger">
+          <i class="fa-solid fa-user-circle"></i> <span data-key="nav-login">Sign In</span>
+        </button>
+
+        <a href="#apply" class="btn-primary apply-cta" data-key="btn-apply-service">Apply Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Floating Sticky Navigation Trigger (Morphism Round Button) -->
+  <div class="floating-nav-container">
+    <button class="btn-floating-trigger" id="floating-nav-toggle" onclick="toggleFloatingNav()">
+      <i class="fa-solid fa-compass"></i>
+    </button>
+    <div class="floating-menu" id="floating-menu">
+      <a href="#home" onclick="toggleFloatingNav()"><i class="fa-solid fa-house"></i> <span data-key="nav-home">Home</span></a>
+      <a href="#about" onclick="toggleFloatingNav()"><i class="fa-solid fa-info-circle"></i> <span data-key="nav-about">About</span></a>
+      <a href="#services" onclick="toggleFloatingNav()"><i class="fa-solid fa-briefcase"></i> <span data-key="nav-services">Services</span></a>
+      <a href="#how-it-works" onclick="toggleFloatingNav()"><i class="fa-solid fa-gear"></i> <span data-key="nav-how">How It Works</span></a>
+      <a href="#track" onclick="toggleFloatingNav()"><i class="fa-solid fa-magnifying-glass"></i> <span data-key="nav-track">Track</span></a>
+      <a href="#faq" onclick="toggleFloatingNav()"><i class="fa-solid fa-circle-question"></i> <span data-key="nav-faq">FAQ</span></a>
+      <a href="#contact" onclick="toggleFloatingNav()"><i class="fa-solid fa-envelope"></i> <span data-key="nav-contact">Contact</span></a>
+      <hr>
+      <a href="#portal" id="floating-portal-link" onclick="toggleFloatingNav()"><i class="fa-solid fa-user-gear"></i> <span data-key="nav-portal">My Portal</span></a>
+    </div>
+  </div>
+
+  <!-- Main View Container -->
+  <main class="main-content">
+    
+    <!-- 1. Home Section -->
+    <section id="home" class="page-view active">
+      <div class="hero-section">
+        <h1 class="hero-title animate-pop" data-key="hero-title">NIGERIA DIASPORA SERVICES</h1>
+        <p class="hero-subtitle" data-key="hero-subtitle">Documentation Processing Assistant & Diaspora Support Services</p>
+        <p class="hero-desc" data-key="hero-desc">
+          Professional, secure, and reliable support for Nigerians in the Diaspora with applications, authentication, verification, and essential government documentation back home.
+        </p>
+        <div class="hero-buttons">
+          <a href="#apply" class="btn-primary btn-large" data-key="btn-apply-service">Apply For Service</a>
+          <a href="#contact" class="btn-glass btn-large" data-key="btn-contact-us">Contact Us</a>
+        </div>
+      </div>
+
+      <!-- Quick Highlights Grid -->
+      <div class="quick-stats-grid">
+        <div class="stat-card glass-panel">
+          <div class="icon-wrap"><i class="fa-solid fa-passport"></i></div>
+          <h3 data-key="stat-pass">Passport Support</h3>
+          <p data-key="stat-pass-desc">Fast-tracked applications & passport documentation review.</p>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="icon-wrap"><i class="fa-solid fa-fingerprint"></i></div>
+          <h3 data-key="stat-nin">NIN & BVN Support</h3>
+          <p data-key="stat-nin-desc">Verification, corrections, and registry support in Nigeria.</p>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="icon-wrap"><i class="fa-solid fa-building-columns"></i></div>
+          <h3 data-key="stat-cac">CAC Registrations</h3>
+          <p data-key="stat-cac-desc">Register businesses, entities, and handle corporate document filing.</p>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="icon-wrap"><i class="fa-solid fa-stamp"></i></div>
+          <h3 data-key="stat-auth">Ministry Authentication</h3>
+          <p data-key="stat-auth-desc">Secure document legalization and embassy authorization.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. About Us Section -->
+    <section id="about" class="page-view">
+      <div class="about-container glass-panel">
+        <div class="about-header">
+          <h2 data-key="about-title">About Nigeria Diaspora Services (NDS)</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="about-grid">
+          <div class="about-text-col">
+            <p class="lead-text" data-key="about-intro">
+              Nigeria Diaspora Services (NDS) is an independent documentation assistant committed to bridging the gap for Nigerians living abroad.
+            </p>
+            <p data-key="about-desc1">
+              Navigating bureaucratic government documentation processes from another country can be stress-inducing. Our professional support network in Nigeria coordinates validation, verification, fresh submissions, and legalization on your behalf with utmost security and transparency.
+            </p>
+            <div class="vision-mission-cards">
+              <div class="mini-card">
+                <h4><i class="fa-solid fa-eye text-gold"></i> <span data-key="vision-title">Our Vision</span></h4>
+                <p data-key="vision-text">To become the most trusted documentation assistance and diaspora support platform connecting Nigerians worldwide to essential services.</p>
+              </div>
+              <div class="mini-card">
+                <h4><i class="fa-solid fa-rocket text-gold"></i> <span data-key="mission-title">Our Mission</span></h4>
+                <p data-key="mission-text">To provide reliable, transparent, and professional documentation processing assistance and support to Nigerians in the Diaspora.</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-stats-col">
+            <div class="progress-bar-wrap">
+              <div class="label-row"><span data-key="metric-accuracy">Accuracy & Legitimacy</span><span>99.8%</span></div>
+              <div class="bar-bg"><div class="bar-fill" style="width: 99.8%"></div></div>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="label-row"><span data-key="metric-satisfaction">Customer Satisfaction</span><span>98.6%</span></div>
+              <div class="bar-bg"><div class="bar-fill" style="width: 98.6%"></div></div>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="label-row"><span data-key="metric-security">Document Security</span><span>100%</span></div>
+              <div class="bar-bg"><div class="bar-fill" style="width: 100%"></div></div>
+            </div>
+            <div class="why-choose-us-box">
+              <h4 data-key="why-choose-title">Why Choose Us?</h4>
+              <ul>
+                <li><i class="fa-solid fa-check-circle"></i> <span data-key="wc-1">Professional Verification Assistance</span></li>
+                <li><i class="fa-solid fa-check-circle"></i> <span data-key="wc-2">Diaspora-Focused & User Friendly</span></li>
+                <li><i class="fa-solid fa-check-circle"></i> <span data-key="wc-3">Application Tracking & Updates</span></li>
+                <li><i class="fa-solid fa-check-circle"></i> <span data-key="wc-4">Secure Cloud Storage for Sensitive Documents</span></li>
+                <li><i class="fa-solid fa-check-circle"></i> <span data-key="wc-5">Dedicated Customer Portal & Messenger Support</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Services Section -->
+    <section id="services" class="page-view">
+      <div class="section-title">
+        <h2 data-key="services-title">Our Professional Services</h2>
+        <p data-key="services-subtitle">Explore our processing assistance for essential documents and certificates</p>
+      </div>
+
+      <!-- Services Category Cards (12 detailed services) -->
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
+          <h3 data-key="s1-title">1. Nigerian Passport Services</h3>
+          <ul>
+            <li data-key="s1-1">Passport Renewal Processing Assistance</li>
+            <li data-key="s1-2">Fresh Passport Application Assistance</li>
+            <li data-key="s1-3">Passport Documentation Support</li>
+          </ul>
+          <a href="#apply?service=Passport%20Services" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 2 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
+          <h3 data-key="s2-title">2. National Identification Number (NIN)</h3>
+          <ul>
+            <li data-key="s2-1">NIN Processing Assistance</li>
+            <li data-key="s2-2">NIN Verification Support</li>
+            <li data-key="s2-3">NIN Correction Guidance</li>
+          </ul>
+          <a href="#apply?service=NIN%20Services" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 3 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-credit-card"></i></div>
+          <h3 data-key="s3-title">3. Bank Verification Number (BVN)</h3>
+          <ul>
+            <li data-key="s3-1">BVN Processing Assistance</li>
+            <li data-key="s3-2">BVN Update/Verification Support</li>
+          </ul>
+          <a href="#apply?service=BVN%20Services" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 4 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3 data-key="s4-title">4. Police Clearance Certificate</h3>
+          <ul>
+            <li data-key="s4-1">Application Assistance</li>
+            <li data-key="s4-2">Documentation Support</li>
+            <li data-key="s4-3">Processing Guidance</li>
+          </ul>
+          <a href="#apply?service=Police%20Clearance" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 5 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-file-medical"></i></div>
+          <h3 data-key="s5-title">5. NDLEA Certificate</h3>
+          <ul>
+            <li data-key="s5-1">Application Assistance</li>
+            <li data-key="s5-2">Processing Support</li>
+            <li data-key="s5-3">Documentation Guidance</li>
+          </ul>
+          <a href="#apply?service=NDLEA%20Certificate" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 6 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-building"></i></div>
+          <h3 data-key="s6-title">6. CAC Corporate Services</h3>
+          <ul>
+            <li data-key="s6-1">Business Name Registration Assistance</li>
+            <li data-key="s6-2">Company Registration Assistance</li>
+            <li data-key="s6-3">CAC Corporate Documentation Support</li>
+          </ul>
+          <a href="#apply?service=CAC%20Services" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 7 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-stamp"></i></div>
+          <h3 data-key="s7-title">7. MOFA Document Authentication</h3>
+          <ul>
+            <li data-key="s7-1">Ministry of Foreign Affairs Assistance</li>
+            <li data-key="s7-2">Document Authentication & Verification</li>
+            <li data-key="s7-3">Verification & Processing Guidance</li>
+          </ul>
+          <a href="#apply?service=MOFA%20Authentication" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 8 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-certificate"></i></div>
+          <h3 data-key="s8-title">8. Foreign Embassy Authentication</h3>
+          <ul>
+            <li data-key="s8-1">Embassy Authentication Assistance</li>
+            <li data-key="s8-2">Document Submission Support</li>
+            <li data-key="s8-3">Processing Guidance</li>
+          </ul>
+          <a href="#apply?service=Embassy%20Authentication" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 9 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-hotel"></i></div>
+          <h3 data-key="s9-title">9. Embassy & Consulate Support</h3>
+          <ul>
+            <li data-key="s9-1">Nigerian Embassy Coordination Support</li>
+            <li data-key="s9-2">Consular Documentation Assistance</li>
+            <li data-key="s9-3">Appointment & Service Guidance</li>
+          </ul>
+          <a href="#apply?service=Consulate%20Support" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 10 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3 data-key="s10-title">10. Court-Issued Documents</h3>
+          <ul>
+            <li data-key="s10-1">Affidavits & Court Certification Support</li>
+            <li data-key="s10-2">Application & Verification Support</li>
+            <li data-key="s10-3">Legal Documentation Guidance</li>
+          </ul>
+          <a href="#apply?service=Court%20Documents" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 11 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-file-contract"></i></div>
+          <h3 data-key="s11-title">11. Business Contract Support</h3>
+          <ul>
+            <li data-key="s11-1">Business Contract Preparation Assist</li>
+            <li data-key="s11-2">Agreement Drafting Support</li>
+            <li data-key="s11-3">Local Business Documentation Setup</li>
+          </ul>
+          <a href="#apply?service=Contract%20Support" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+        <!-- Service 12 -->
+        <div class="service-detail-card glass-panel">
+          <div class="service-icon"><i class="fa-solid fa-people-carry-box"></i></div>
+          <h3 data-key="s12-title">12. Labour & Agency Services</h3>
+          <ul>
+            <li data-key="s12-1">Labour Documentation Assistance</li>
+            <li data-key="s12-2">Employment Registry Support</li>
+            <li data-key="s12-3">Guidance & Compliance Checks</li>
+          </ul>
+          <a href="#apply?service=Labour%20Services" class="btn-glass service-apply-btn" data-key="btn-apply-short">Apply</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. How It Works Section -->
+    <section id="how-it-works" class="page-view">
+      <div class="section-title">
+        <h2 data-key="how-title">How NDS Simplifies the Process</h2>
+        <p data-key="how-subtitle">Secure, fast, and structured in 4 simple stages</p>
+      </div>
+
+      <div class="how-it-works-flow">
+        <div class="flow-step glass-panel">
+          <span class="step-num">01</span>
+          <h3 data-key="step1-title">Submit Request</h3>
+          <p data-key="step1-desc">Register on our portal, choose your service, and fill in details with initial document scans.</p>
+        </div>
+        <div class="flow-step glass-panel">
+          <span class="step-num">02</span>
+          <h3 data-key="step2-title">Document Review</h3>
+          <p data-key="step2-desc">Our processing managers review inputs to check if parameters match requirement checklists.</p>
+        </div>
+        <div class="flow-step glass-panel">
+          <span class="step-num">03</span>
+          <h3 data-key="step3-title">Processing Support</h3>
+          <p data-key="step3-desc">We coordinate locally in Nigeria with ministries, registries, or consulates to complete processing.</p>
+        </div>
+        <div class="flow-step glass-panel">
+          <span class="step-num">04</span>
+          <h3 data-key="step4-title">Completion & Dispatch</h3>
+          <p data-key="step4-desc">Track status milestones on your tracker and securely download your authentic certifications.</p>
+        </div>
+      </div>
+
+      <!-- Legal Disclaimer -->
+      <div class="disclaimer-alert glass-panel">
+        <div class="disclaimer-header">
+          <i class="fa-solid fa-scale-unbalanced-flip text-gold"></i>
+          <h4 data-key="legal-disclaimer-title">IMPORTANT LEGAL NOTICE & DISCLAIMER</h4>
+        </div>
+        <p data-key="legal-disclaimer-text">
+          Nigeria Diaspora Services (NDS) is an independent documentation assistance and administrative support provider. We are <strong>not</strong> a Nigerian government agency, embassy, consulate, law-enforcement body, court, CAC, or NDLEA affiliate. Official approvals, authentic certificates, and seals are issued exclusively by the respective regulatory government bodies or authorized institutions in Nigeria.
+        </p>
+      </div>
+    </section>
+
+    <!-- 5. Apply Now Section -->
+    <section id="apply" class="page-view">
+      <div class="apply-container glass-panel">
+        <h2 data-key="apply-head">Start Your Application</h2>
+        <p class="subtitle" data-key="apply-sub">Submit your details and support files securely. Ensure you are signed in first.</p>
+        
+        <div id="apply-auth-alert" class="alert-box alert-warning">
+          <i class="fa-solid fa-lock"></i>
+          <span>You must be signed in to submit an application. <a href="javascript:void(0)" onclick="openAuthModal()" class="text-gold font-bold">Click here to sign in or create an account.</a></span>
+        </div>
+
+        <form id="apply-form" onsubmit="handleApplySubmit(event)" style="display: none;">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="apply-service" data-key="lbl-service">Service Required *</label>
+              <select id="apply-service" required>
+                <option value="Passport Services">Nigerian Passport Services</option>
+                <option value="NIN Services">National Identification Number (NIN)</option>
+                <option value="BVN Services">Bank Verification Number (BVN)</option>
+                <option value="Police Clearance">Police Clearance Certificate</option>
+                <option value="NDLEA Certificate">NDLEA Certificate Assistance</option>
+                <option value="CAC Services">CAC Corporate Registration</option>
+                <option value="MOFA Authentication">MOFA Document Authentication</option>
+                <option value="Embassy Authentication">Foreign Embassy Authentication</option>
+                <option value="Consulate Support">Embassy & Consulate Support</option>
+                <option value="Court Documents">Court-Issued Documents</option>
+                <option value="Contract Support">Business Contract Support</option>
+                <option value="Labour Services">Labour & Agency Services</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="apply-contact" data-key="lbl-contact">Preferred Contact Method *</label>
+              <select id="apply-contact" required>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Email">Email</option>
+                <option value="Phone Call">Phone Call</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-desc" data-key="lbl-desc">Additional Details / Specific Request Info</label>
+            <textarea id="apply-desc" rows="4" placeholder="State your requirements, renewal reason, corporate names, or changes requested..." required></textarea>
+          </div>
+
+          <!-- Document Upload Box (Simulated to Cloudinary via API) -->
+          <div class="form-group">
+            <label data-key="lbl-files">Upload Supporting Identification / Scans *</label>
+            <div class="file-drop-area glass-panel" id="file-drop-area">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <p><span data-key="upload-click">Click to browse</span> or drag & drop files here</p>
+              <input type="file" id="apply-files" multiple onchange="handleFileSelect(event)">
+              <div id="file-list-preview" class="file-list-preview"></div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary w-100" id="apply-submit-btn">
+            <i class="fa-solid fa-paper-plane"></i> <span data-key="btn-submit-app">Submit Application</span>
+          </button>
+        </form>
+
+        <!-- Application Success / Receipt Panel -->
+        <div id="apply-success-panel" class="success-panel text-center" style="display: none;">
+          <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <h3 data-key="success-headline">Submission Received!</h3>
+          <p data-key="success-body">Your request is queued and our admin team will review it shortly. Save your reference number to track live milestones.</p>
+          <div class="reference-number-badge">
+            <span id="created-ref-num">NDS-2026-000000</span>
+            <button onclick="copyRefText()" title="Copy Reference"><i class="fa-solid fa-copy"></i></button>
+          </div>
+          <p class="text-sm text-dimmed">Confirmation receipt sent to your profile inbox.</p>
+          <div class="success-actions">
+            <a href="#track" class="btn-primary" data-key="btn-track-go">Track Application</a>
+            <a href="#portal" class="btn-glass" data-key="btn-portal-go">Go to Portal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Track Application Section -->
+    <section id="track" class="page-view">
+      <div class="track-container glass-panel">
+        <h2 data-key="track-title">Track Application Progress</h2>
+        <p class="subtitle" data-key="track-desc">Enter your unique reference number to inspect live status milestones</p>
+        
+        <div class="track-input-row">
+          <div class="input-icon-wrap">
+            <i class="fa-solid fa-hashtag"></i>
+            <input type="text" id="track-ref-input" placeholder="e.g. NDS-2026-102948" required>
+          </div>
+          <button onclick="searchTracking()" class="btn-primary" id="track-search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i> <span data-key="btn-track-search">Search</span>
+          </button>
+        </div>
+
+        <div id="track-result-panel" class="track-result-panel" style="display: none;">
+          <div class="track-meta">
+            <div>
+              <h4 id="track-val-service">NIN Correction Assistance</h4>
+              <p class="text-sm text-dimmed">Ref: <strong id="track-val-ref">NDS-2026-102948</strong></p>
+            </div>
+            <div>
+              <span id="track-val-status-badge" class="badge badge-received">Application Received</span>
+            </div>
+          </div>
+
+          <!-- Stepper Progress Bar -->
+          <div class="stepper-wrap">
+            <div class="step-progress-bar">
+              <div class="progress-line" id="track-progress-line"></div>
+              
+              <div class="step-node active" id="node-received">
+                <div class="node-dot"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <div class="node-label" data-key="st-rec">Received</div>
+              </div>
+              <div class="step-node" id="node-review">
+                <div class="node-dot"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div class="node-label" data-key="st-rev">Under Review</div>
+              </div>
+              <div class="step-node" id="node-action">
+                <div class="node-dot"><i class="fa-solid fa-file-signature"></i></div>
+                <div class="node-label" data-key="st-doc">Docs Needed</div>
+              </div>
+              <div class="step-node" id="node-processing">
+                <div class="node-dot"><i class="fa-solid fa-gears"></i></div>
+                <div class="node-label" data-key="st-proc">Processing</div>
+              </div>
+              <div class="step-node" id="node-completed">
+                <div class="node-dot"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="node-label" data-key="st-comp">Completed</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Application Chat / Messages Interface -->
+          <div class="tracking-chat-area">
+            <h4 data-key="chat-history-title"><i class="fa-solid fa-comments"></i> Admin Communication logs</h4>
+            <div class="chat-logs-container" id="track-chat-logs">
+              <!-- Logs dynamically generated -->
+            </div>
+            <!-- Client Send message form if customer wants to comment -->
+            <form id="track-message-form" class="chat-input-row" onsubmit="handleSendTrackingMessage(event)">
+              <input type="hidden" id="track-msg-app-id">
+              <input type="text" id="track-msg-text" placeholder="Type a message to the NDS admin support team..." required>
+              <button type="submit" class="btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <div id="track-not-found" class="alert-box alert-danger text-center" style="display: none;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span data-key="track-error-text">No record matches that application reference. Please crosscheck characters.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FAQ Section -->
+    <section id="faq" class="page-view">
+      <div class="section-title">
+        <h2 data-key="faq-title">Frequently Asked Questions</h2>
+        <p data-key="faq-subtitle">Clear explanations of our services, logistics, and capabilities</p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item glass-panel">
+          <button class="faq-question">
+            <span data-key="faq-q1">Who can use Nigeria Diaspora Services?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p data-key="faq-a1">Any Nigerian citizen or business owner residing outside Nigeria (Diaspora) requiring professional support processing legal or bureaucratic paperwork in Nigeria.</p>
+          </div>
+        </div>
+        <div class="faq-item glass-panel">
+          <button class="faq-question">
+            <span data-key="faq-q2">Can I apply entirely from outside Nigeria?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p data-key="faq-a2">Yes! The primary objective is to allow applicants abroad to submit scans of details, track progress, and get authentication documents processed remotely without leaving their country of residence.</p>
+          </div>
+        </div>
+        <div class="faq-item glass-panel">
+          <button class="faq-question">
+            <span data-key="faq-q3">How do I track my request?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p data-key="faq-a3">Once submitted, you'll get a reference (e.g. NDS-2026-102948) which you can query anytime under the 'Track Application' tab to see visual stepper checkpoints.</p>
+          </div>
+        </div>
+        <div class="faq-item glass-panel">
+          <button class="faq-question">
+            <span data-key="faq-q4">Are you a government agency?</span>
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <div class="faq-answer">
+            <p data-key="faq-a4">No. NDS is a privately managed consulting assistance network. We charge handling/processing fees to support compiling, dispatching, and following up on files at ministries and consulates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Contact Us Section -->
+    <section id="contact" class="page-view">
+      <div class="contact-grid">
+        <!-- Details Column -->
+        <div class="contact-info-panel glass-panel">
+          <h2 data-key="contact-head">Connect With Us</h2>
+          <p class="lead" data-key="contact-sub">Have urgent enquiries or requests? Get in touch with our helpdesk instantly.</p>
+          
+          <div class="contact-methods">
+            <div class="method-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <h5 data-key="c-head-office">Head Office</h5>
+                <p>Wuse Zone 5, Abuja, Federal Capital Territory, Nigeria</p>
+              </div>
+            </div>
+            <div class="method-item">
+              <i class="fa-solid fa-location-arrow"></i>
+              <div>
+                <h5 data-key="c-branch-office">Branch Office</h5>
+                <p>54 Guda Abdullahi Street, Farm Center, Kano State, Nigeria</p>
+              </div>
+            </div>
+            <div class="method-item">
+              <i class="fa-solid fa-envelope-open"></i>
+              <div>
+                <h5>Email Helpdesk</h5>
+                <p><a href="mailto:Nigeriadiasporaservices@gmail.com">Nigeriadiasporaservices@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="method-item">
+              <i class="fa-solid fa-phone-volume"></i>
+              <div>
+                <h5>Call Support</h5>
+                <p><a href="tel:+2347047000070">+234 704 700 0070</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-channels">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact Form Column -->
+        <div class="contact-form-panel glass-panel">
+          <h3 data-key="c-send-msg">Send Us an Inquiry</h3>
+          <form id="contact-inquiry-form" onsubmit="handleInquiry(event)">
+            <div class="form-group">
+              <label for="c-name">Full Name</label>
+              <input type="text" id="c-name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="c-email">Email Address</label>
+              <input type="email" id="c-email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="c-msg">Message / Detail</label>
+              <textarea id="c-msg" rows="5" placeholder="Detail your inquiries..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-100"><i class="fa-solid fa-paper-plane"></i> Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Customer Account Portal Section -->
+    <section id="portal" class="page-view">
+      <div class="portal-grid">
+        <!-- Sidebar Navigation -->
+        <div class="portal-sidebar glass-panel">
+          <div class="user-profile-summary">
+            <div class="user-avatar"><i class="fa-solid fa-user-circle"></i></div>
+            <h4 id="portal-user-name">Loading Profile...</h4>
+            <span class="user-role" id="portal-user-role">Customer Account</span>
+          </div>
+          <div class="portal-sidebar-nav">
+            <button class="portal-tab-btn active" onclick="switchPortalTab('dashboard')"><i class="fa-solid fa-chart-line"></i> Dashboard</button>
+            <button class="portal-tab-btn" onclick="switchPortalTab('applications')"><i class="fa-solid fa-folder-open"></i> My Applications</button>
+            <button class="portal-tab-btn" onclick="switchPortalTab('messages')"><i class="fa-solid fa-envelope"></i> Inbox Logs</button>
+            <hr class="sidebar-divider">
+            <button onclick="handleLogout()" class="portal-tab-btn text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="portal-main-content">
+          
+          <!-- Portal Sub-tab: Dashboard -->
+          <div id="portal-tab-dashboard" class="portal-tab-content active">
+            <div class="welcome-banner glass-panel">
+              <h2 id="portal-welcome-msg">Welcome Back!</h2>
+              <p>You can manage and track all your documentation requests inside your secure portal.</p>
+            </div>
+            <div class="portal-stats-row">
+              <div class="stat-bubble glass-panel">
+                <span class="num" id="portal-stat-total">0</span>
+                <span class="lbl">Total Applications</span>
+              </div>
+              <div class="stat-bubble glass-panel">
+                <span class="num text-gold" id="portal-stat-pending">0</span>
+                <span class="lbl">Active Cases</span>
+              </div>
+              <div class="stat-bubble glass-panel">
+                <span class="num text-success" id="portal-stat-completed">0</span>
+                <span class="lbl">Completed Requests</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portal Sub-tab: Applications -->
+          <div id="portal-tab-applications" class="portal-tab-content">
+            <div class="portal-header">
+              <h3>My Applications</h3>
+              <a href="#apply" class="btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Submit New</a>
+            </div>
+            <div class="portal-table-container glass-panel">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>Ref ID</th>
+                    <th>Service Required</th>
+                    <th>Date Created</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="portal-applications-list">
+                  <!-- Generated Dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Portal Sub-tab: Messages -->
+          <div id="portal-tab-messages" class="portal-tab-content">
+            <h3>Support Conversations</h3>
+            <p class="text-sm text-dimmed">Send and receive status support chat logs relative to your applications below.</p>
+            <div class="inbox-messages-list" id="portal-inbox-list">
+              <!-- Render dynamic lists of applications having chat histories -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Admin Control Dashboard Section -->
+    <section id="admin-dashboard" class="page-view">
+      <div class="admin-grid">
+        <!-- Admin Sidebar -->
+        <div class="admin-sidebar glass-panel">
+          <div class="admin-profile">
+            <div class="admin-avatar"><i class="fa-solid fa-user-shield text-gold"></i></div>
+            <h4>NDS Admin Portal</h4>
+            <span>Security Administrator</span>
+          </div>
+          <div class="admin-nav">
+            <button class="admin-tab-btn active" onclick="switchAdminTab('overview')"><i class="fa-solid fa-gauge"></i> Overview</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('applications')"><i class="fa-solid fa-folder-tree"></i> Manage Applications</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('settings')"><i class="fa-solid fa-screwdriver-wrench"></i> Site Configurations</button>
+            <hr class="sidebar-divider">
+            <button onclick="handleLogout()" class="admin-tab-btn text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+          </div>
+        </div>
+
+        <!-- Admin Content Panel -->
+        <div class="admin-main-panel">
+          
+          <!-- Admin Overview Tab -->
+          <div id="admin-tab-overview" class="admin-tab-content active">
+            <div class="admin-stats-grid">
+              <div class="stat-card-admin glass-panel">
+                <i class="fa-solid fa-cubes"></i>
+                <div>
+                  <h3 id="admin-stat-total">0</h3>
+                  <p>Total Submissions</p>
+                </div>
+              </div>
+              <div class="stat-card-admin glass-panel">
+                <i class="fa-solid fa-bell text-gold"></i>
+                <div>
+                  <h3 id="admin-stat-new">0</h3>
+                  <p>Received (New)</p>
+                </div>
+              </div>
+              <div class="stat-card-admin glass-panel">
+                <i class="fa-solid fa-arrows-spin text-info"></i>
+                <div>
+                  <h3 id="admin-stat-processing">0</h3>
+                  <p>Processing Cases</p>
+                </div>
+              </div>
+              <div class="stat-card-admin glass-panel">
+                <i class="fa-solid fa-users"></i>
+                <div>
+                  <h3 id="admin-stat-users">0</h3>
+                  <p>Registered Users</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent applications list shortcut -->
+            <div class="dashboard-block glass-panel mt-20">
+              <h4>Recent Customer Applications</h4>
+              <div class="table-responsive">
+                <table class="portal-table">
+                  <thead>
+                    <tr>
+                      <th>Ref ID</th>
+                      <th>Customer</th>
+                      <th>Service</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-recent-apps">
+                    <!-- Dynamic -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Manage Applications Tab -->
+          <div id="admin-tab-applications" class="admin-tab-content">
+            <div class="portal-header">
+              <h3>All Customer Requests</h3>
+              <div class="search-filter-row">
+                <select id="admin-status-filter" onchange="filterAdminApplications()">
+                  <option value="All">All Statuses</option>
+                  <option value="Application Received">Application Received</option>
+                  <option value="Under Review">Under Review</option>
+                  <option value="Documents Required">Documents Required</option>
+                  <option value="Processing">Processing</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Closed">Closed</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="portal-table-container glass-panel">
+              <table class="portal-table">
+                <thead>
+                  <tr>
+                    <th>Ref ID</th>
+                    <th>Customer Name</th>
+                    <th>Email / Phone</th>
+                    <th>Service Required</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-applications-list">
+                  <!-- Generated Dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Admin Configuration Settings Tab -->
+          <div id="admin-tab-settings" class="admin-tab-content">
+            <h3>Site Settings & Content Editor</h3>
+            <p>Mock operations to demonstrate updating NDS FAQ content, contact phone values, and company coordinates.</p>
+            <div class="settings-grid">
+              <div class="glass-panel p-20">
+                <h5>Update Helpdesk Contact Coordinates</h5>
+                <form id="admin-contact-config-form" onsubmit="event.preventDefault(); alert('Helpdesk parameters updated in UI!');">
+                  <div class="form-group">
+                    <label>WhatsApp Integration Mobile Number</label>
+                    <input type="text" value="+234 704 700 0070">
+                  </div>
+                  <div class="form-group">
+                    <label>Assigned Support Email</label>
+                    <input type="email" value="Nigeriadiasporaservices@gmail.com">
+                  </div>
+                  <button type="submit" class="btn-primary w-100">Apply Changes</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Elegant Sign-In / Register Modal Shell -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-card glass-panel animate-zoom">
+      <div class="modal-close" onclick="closeAuthModal()"><i class="fa-solid fa-xmark"></i></div>
+      
+      <!-- Tab Toggles inside modal -->
+      <div class="modal-tabs">
+        <button id="modal-tab-login" class="active" onclick="switchAuthModalTab('login')">Sign In</button>
+        <button id="modal-tab-register" onclick="switchAuthModalTab('register')">Register Account</button>
+      </div>
+
+      <!-- Login Pane -->
+      <div class="modal-pane active" id="pane-login">
+        <h3 class="text-center mb-10">Sign In to NDS</h3>
+        <p class="text-center text-sm text-dimmed mb-20">Access your tracking dashboard and submissions database</p>
+        <form onsubmit="handleLoginSubmit(event)">
+          <div class="form-group">
+            <label for="login-email">Email Address *</label>
+            <input type="email" id="login-email" placeholder="e.g. name@diaspora.com" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password *</label>
+            <div class="input-password-container">
+              <input type="password" id="login-password" required>
+              <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('login-password')">
+                <i class="fa-solid fa-eye-slash"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary w-100 mt-20"><i class="fa-solid fa-right-to-bracket"></i> Authenticate</button>
+        </form>
+      </div>
+
+      <!-- Register Pane -->
+      <div class="modal-pane" id="pane-register">
+        <h3 class="text-center mb-10">Create Diaspora Account</h3>
+        <p class="text-center text-sm text-dimmed mb-20">Set up profile credentials to process document requests</p>
+        <form onsubmit="handleRegisterSubmit(event)">
+          <div class="form-group">
+            <label for="reg-name">Full Name *</label>
+            <input type="text" id="reg-name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address *</label>
+            <input type="email" id="reg-email" placeholder="john@diaspora.com" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-phone">Phone Number *</label>
+              <input type="text" id="reg-phone" placeholder="+44 7911 123456" required>
+            </div>
+            <div class="form-group">
+              <label for="reg-country">Country of Residence *</label>
+              <input type="text" id="reg-country" placeholder="United Kingdom" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="reg-state">State/Country of Origin in Nigeria</label>
+            <input type="text" id="reg-state" placeholder="e.g. Lagos State">
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Choose Password *</label>
+            <div class="input-password-container">
+              <input type="password" id="reg-password" required>
+              <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('reg-password')">
+                <i class="fa-solid fa-eye-slash"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary w-100 mt-10"><i class="fa-solid fa-user-plus"></i> Register Profile</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Application Action Modal -->
+  <div class="modal-overlay" id="admin-action-modal">
+    <div class="modal-card glass-panel max-w-600">
+      <div class="modal-close" onclick="closeAdminActionModal()"><i class="fa-solid fa-xmark"></i></div>
+      <h3>Review Application Details</h3>
+      <div class="divider"></div>
+      
+      <div class="admin-detail-row">
+        <div>
+          <h5 class="text-dimmed text-sm">Reference</h5>
+          <p id="admin-detail-ref" class="font-bold text-lg">NDS-2026-XXXXXX</p>
+        </div>
+        <div>
+          <h5 class="text-dimmed text-sm">Current Status</h5>
+          <span id="admin-detail-status-badge" class="badge">Received</span>
+        </div>
+      </div>
+
+      <div class="admin-detail-row mt-15">
+        <div>
+          <h5 class="text-dimmed text-sm">Customer Details</h5>
+          <p id="admin-detail-user">John Doe (+44 7911 123456)</p>
+          <p id="admin-detail-email" class="text-sm text-dimmed">john@example.com</p>
+        </div>
+        <div>
+          <h5 class="text-dimmed text-sm">Service Requested</h5>
+          <p id="admin-detail-service" class="font-bold">NIN Correction Assistance</p>
+        </div>
+      </div>
+
+      <div class="admin-detail-full mt-15">
+        <h5 class="text-dimmed text-sm">Customer Request Description</h5>
+        <div class="description-box" id="admin-detail-desc">No description specified.</div>
+      </div>
+
+      <div class="admin-detail-full mt-15">
+        <h5 class="text-dimmed text-sm">Uploaded Documents</h5>
+        <div class="document-previews-row" id="admin-detail-docs">
+          <!-- Dynamic Links -->
+        </div>
+      </div>
+
+      <!-- Action Panel -->
+      <form id="admin-update-form" class="mt-20 border-top pt-15" onsubmit="handleAdminUpdate(event)">
+        <input type="hidden" id="admin-action-app-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="admin-update-status">Update Status Milestone</label>
+            <select id="admin-update-status">
+              <option value="Application Received">Application Received</option>
+              <option value="Under Review">Under Review</option>
+              <option value="Documents Required">Documents Required</option>
+              <option value="Processing">Processing</option>
+              <option value="Completed">Completed</option>
+              <option value="Closed">Closed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="admin-update-notes">Admin Notes (Internal)</label>
+          <textarea id="admin-update-notes" rows="2" placeholder="Record internal updates or tasks status..."></textarea>
+        </div>
+
+        <!-- Chat Send Shortcut -->
+        <div class="form-group">
+          <label for="admin-update-message">Send Message to Customer Profile</label>
+          <textarea id="admin-update-message" rows="2" placeholder="Inform customer of any details, missing documents, or updates..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary w-100" id="admin-update-submit">
+          <i class="fa-solid fa-floppy-disk"></i> Save & Update Application
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- WhatsApp Floating Sticky Button -->
+  <a href="https://wa.me/2347047000070?text=Hello%20Nigeria%20Diaspora%20Services,%20I%20have%20an%20enquiry..." target="_blank" class="whatsapp-floating" title="Chat with NDS support on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="whatsapp-label">Chat With Us</span>
+  </a>
+
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Core Javascript -->
+  <script src="app.js"></script>
+</body>
+</html>

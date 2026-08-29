@@ -356,7 +356,7 @@ function routeApp() {
   // Show or hide bottom nav depending on active portal/dashboard views
   const bottomNav = document.querySelector('.portal-bottom-nav');
   if (bottomNav) {
-    if (cleanHash === '#portal' || cleanHash === '#admin-dashboard') {
+    if (cleanHash === '#home' || cleanHash === '#portal' || cleanHash === '#admin-dashboard') {
       bottomNav.classList.add('active-view');
     } else {
       bottomNav.classList.remove('active-view');

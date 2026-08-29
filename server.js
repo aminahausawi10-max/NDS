@@ -82,7 +82,7 @@ const server = http.createServer((req, res) => {
     pathname = '/index.html';
   }
 
-  const filePath = path.join(__dirname, pathname);
+  const filePath = path.join(__dirname, 'public', pathname);
   const ext = path.extname(filePath).toLowerCase();
 
   const mimeTypes = {

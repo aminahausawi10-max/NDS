@@ -94,72 +94,40 @@
     
     <!-- 1. Home Section -->
     <section id="home" class="page-view active">
-      <!-- Balance Wallet Card (Matching Diagram Reference) -->
-      <div class="wallet-card-container">
-        <div class="wallet-card animate-zoom">
-          <div class="wallet-label-row">
-            <span>Total Balance</span>
-            <i class="fa-solid fa-wallet"></i>
-          </div>
-          <div class="wallet-balance-amt" id="home-wallet-balance-display">₦4,160.00</div>
-          <div class="wallet-actions-row">
-            <button class="wallet-btn" onclick="alert('Fund Wallet simulation initialized! Connect payment gateway.')">
-              <i class="fa-solid fa-plus-circle"></i> Fund Wallet
-            </button>
-            <button class="wallet-btn wallet-btn-secondary" onclick="alert('Expenses & Transaction logs are empty.')">
-              <i class="fa-solid fa-receipt"></i> Expenses
-            </button>
-          </div>
+      <div class="hero-section">
+        <h1 class="hero-title animate-pop" data-key="hero-title">NIGERIA DIASPORA SERVICES</h1>
+        <p class="hero-subtitle" data-key="hero-subtitle">Documentation Processing Assistant & Diaspora Support Services</p>
+        <p class="hero-desc" data-key="hero-desc">
+          Professional, secure, and reliable support for Nigerians in the Diaspora with applications, authentication, verification, and essential government documentation back home.
+        </p>
+        <div class="hero-buttons">
+          <a href="#apply" class="btn-primary btn-large" data-key="btn-apply-service">Apply For Service</a>
+          <a href="#contact" class="btn-glass btn-large" data-key="btn-contact-us">Contact Us</a>
         </div>
       </div>
 
-      <!-- All Services Section (Matching Diagram Grid Reference) -->
-      <div class="dashboard-title-row">
-        <i class="fa-solid fa-grip"></i>
-        <h4>All Services</h4>
-      </div>
-
-      <div class="quick-services-grid">
-        <a href="#apply?service=NIN%20Services" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-fingerprint"></i></div>
-          <span class="quick-service-label">NIN Search</span>
-        </a>
-        <a href="#apply?service=NIN%20Services" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-phone"></i></div>
-          <span class="quick-service-label">NIN by Phone</span>
-        </a>
-        <a href="#apply?service=NIN%20Services" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-users-viewfinder"></i></div>
-          <span class="quick-service-label">Search Demographic</span>
-        </a>
-        <a href="#apply?service=NIN%20Services" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-fingerprint"></i></div>
-          <span class="quick-service-label">NIN V2</span>
-        </a>
-        <a href="#apply?service=BVN%20Services" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-user-check"></i></div>
-          <span class="quick-service-label">BVN Verification</span>
-        </a>
-        <a href="#apply?service=BVN%20Services" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-id-card"></i></div>
-          <span class="quick-service-label">BVN Retrieval</span>
-        </a>
-        <a href="#apply?service=Passport%20Services" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-user-gear"></i></div>
-          <span class="quick-service-label">Personalization</span>
-        </a>
-        <a href="#apply?service=Police%20Clearance" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
-          <span class="quick-service-label">IPE Clearance</span>
-        </a>
-        <a href="#apply?service=Police%20Clearance" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-circle-nodes"></i></div>
-          <span class="quick-service-label">MOD IPE Clearance</span>
-        </a>
-        <a href="#apply?service=Passport%20Services" class="quick-service-card">
-          <div class="quick-service-icon-wrap"><i class="fa-solid fa-passport"></i></div>
-          <span class="quick-service-label">Passport Renewal</span>
-        </a>
+      <!-- Quick Highlights Grid -->
+      <div class="quick-stats-grid">
+        <div class="stat-card glass-panel">
+          <div class="icon-wrap"><i class="fa-solid fa-passport"></i></div>
+          <h3 data-key="stat-pass">Passport Support</h3>
+          <p data-key="stat-pass-desc">Fast-tracked applications & passport documentation review.</p>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="icon-wrap"><i class="fa-solid fa-fingerprint"></i></div>
+          <h3 data-key="stat-nin">NIN & BVN Support</h3>
+          <p data-key="stat-nin-desc">Verification, corrections, and registry support in Nigeria.</p>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="icon-wrap"><i class="fa-solid fa-building-columns"></i></div>
+          <h3 data-key="stat-cac">CAC Registrations</h3>
+          <p data-key="stat-cac-desc">Register businesses, entities, and handle corporate document filing.</p>
+        </div>
+        <div class="stat-card glass-panel">
+          <div class="icon-wrap"><i class="fa-solid fa-stamp"></i></div>
+          <h3 data-key="stat-auth">Ministry Authentication</h3>
+          <p data-key="stat-auth-desc">Secure document legalization and embassy authorization.</p>
+        </div>
       </div>
     </section>
 

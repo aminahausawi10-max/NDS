@@ -1,16 +1,25 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-const connectionString = process.env.DATABASE_URL;
+let pool;
 
-const pool = new Pool({
-  connectionString,
-  ssl: {
-    rejectUnauthorized: false
+function getPool() {
+  if (!pool) {
+    const connectionString = process.env.DATABASE_URL;
+    if (!connectionString) {
+      throw new Error('DATABASE_URL environment variable is missing or undefined');
+    }
+    pool = new Pool({
+      connectionString,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    });
   }
-});
+  return pool;
+}
 
 module.exports = {
-  query: (text, params) => pool.query(text, params),
-  pool
+  query: (text, params) => getPool().query(text, params),
+  getPool
 };

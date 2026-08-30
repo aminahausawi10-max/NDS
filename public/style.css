@@ -1743,13 +1743,13 @@ select option {
 }
 
 .quick-service-icon-wrap {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #ffffff !important;
+  border: 1px solid rgba(230, 33, 23, 0.15);
   color: var(--accent-light);
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1758,7 +1758,7 @@ select option {
 }
 
 .quick-service-card:hover .quick-service-icon-wrap {
-  background: var(--primary);
+  background: var(--accent) !important;
   color: #fff;
   border-color: transparent;
 }
@@ -1883,21 +1883,22 @@ select option {
 }
 
 .home-service-icon-wrap {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: rgba(230, 33, 23, 0.15);
+  background: #ffffff !important;
   color: #e62117;
-  font-size: 20px;
+  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
+  border: 1px solid rgba(230, 33, 23, 0.15);
   transition: var(--transition-smooth);
 }
 
 .home-service-button:hover .home-service-icon-wrap {
-  background: #e62117;
+  background: #e62117 !important;
   color: #ffffff;
 }
 
@@ -1909,8 +1910,8 @@ select option {
 }
 
 .home-service-logo-img {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
   border-radius: 50%;
 }

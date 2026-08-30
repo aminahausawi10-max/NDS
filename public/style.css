@@ -1613,14 +1613,23 @@ select option {
 
 @media (max-width: 768px) {
   .header-container {
-    padding: 10px 12px !important;
+    padding: 8px 10px !important;
   }
   .logo img {
-    height: 50px !important;
-    width: 50px !important;
+    height: 75px !important;
+    width: 75px !important;
   }
   .logo span {
     display: none !important;
+  }
+  .header-actions .btn-glass {
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+  }
+  .header-actions .theme-toggle-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 13px !important;
   }
   .desktop-nav {
     display: none;

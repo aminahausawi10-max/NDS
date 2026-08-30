@@ -201,6 +201,11 @@ export default function Home() {
         localStorage.setItem('ssa_usertype', data.type);
         setLoginEmail('');
         setLoginPassword('');
+        if (data.type === 'STAFF') {
+          setActiveTab('admin');
+        } else {
+          setActiveTab('portal');
+        }
         fetchData();
       } else {
         setLoginError(data.error || 'Login failed.');
@@ -1067,18 +1072,6 @@ export default function Home() {
                       </span>
                     </p>
                   </div>
-
-                  <hr className="border-slate-200/50" />
-                  
-                  {/* Mock accounts credentials lookup */}
-                  <div className="space-y-2 text-xs">
-                    <p className="font-bold text-slate-700">Quick Test Staff Logins (Password in brackets):</p>
-                    <ul className="list-disc pl-5 space-y-1 text-slate-500">
-                      <li>Verification Officer: <code className="bg-slate-100 p-0.5 rounded">verification@ssa.gov.ng</code> (verify123)</li>
-                      <li>Case Handler: <code className="bg-slate-100 p-0.5 rounded">case@ssa.gov.ng</code> (case123)</li>
-                      <li>UK Desk Lead: <code className="bg-slate-100 p-0.5 rounded">ukdesk@ssa.gov.ng</code> (desk123)</li>
-                    </ul>
-                  </div>
                 </form>
               </div>
             )}
@@ -1798,13 +1791,15 @@ export default function Home() {
             <span>Portal</span>
           </button>
 
-          <button 
-            onClick={() => setActiveTab('admin')}
-            className={`sticky-nav-btn ${activeTab === 'admin' ? 'active' : ''}`}
-          >
-            <Briefcase size={18} />
-            <span>Admin</span>
-          </button>
+          {userType === 'STAFF' && (
+            <button 
+              onClick={() => setActiveTab('admin')}
+              className={`sticky-nav-btn ${activeTab === 'admin' ? 'active' : ''}`}
+            >
+              <Briefcase size={18} />
+              <span>Admin</span>
+            </button>
+          )}
 
           <button 
             onClick={() => setActiveTab('verify')}

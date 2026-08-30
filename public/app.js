@@ -1002,9 +1002,42 @@ document.querySelectorAll('.faq-question').forEach(q => {
   });
 });
 
+// Theme Toggle System
+function toggleTheme() {
+  const body = document.body;
+  const currentTheme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+  const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  const toggleBtn = document.getElementById('theme-toggle');
+  
+  if (nextTheme === 'dark') {
+    body.classList.add('dark-theme');
+    if (toggleBtn) toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  } else {
+    body.classList.remove('dark-theme');
+    if (toggleBtn) toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  }
+  localStorage.setItem('nds_theme', nextTheme);
+  showToast(`Switched to ${nextTheme === 'dark' ? 'Dark' : 'Light'} Mode!`);
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('nds_theme') || 'light';
+  const body = document.body;
+  const toggleBtn = document.getElementById('theme-toggle');
+  
+  if (savedTheme === 'dark') {
+    body.classList.add('dark-theme');
+    if (toggleBtn) toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  } else {
+    body.classList.remove('dark-theme');
+    if (toggleBtn) toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  }
+}
+
 // App Initialization
 window.addEventListener('hashchange', routeApp);
 window.addEventListener('DOMContentLoaded', () => {
   routeApp();
   syncSessionUI();
+  initTheme();
 });

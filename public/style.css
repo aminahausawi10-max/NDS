@@ -1777,14 +1777,15 @@ select option {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-md);
-  padding: 16px;
+  padding: 10px 8px;
   text-align: center;
   text-decoration: none;
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  min-height: 125px;
 }
 
 .quick-service-card:hover {
@@ -1794,24 +1795,23 @@ select option {
 }
 
 .quick-service-icon-wrap {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  width: 100%;
+  height: 65px;
+  border-radius: 8px;
   background: #ffffff !important;
   border: 1px solid rgba(230, 33, 23, 0.15);
-  color: var(--accent-light);
-  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  padding: 4px;
   transition: var(--transition-smooth);
+  overflow: hidden;
 }
 
 .quick-service-card:hover .quick-service-icon-wrap {
-  background: var(--accent) !important;
-  color: #fff;
-  border-color: transparent;
+  border-color: var(--accent);
+  box-shadow: 0 3px 10px rgba(230, 33, 23, 0.18);
 }
 
 .quick-service-label {
@@ -1913,17 +1913,17 @@ select option {
   -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid rgba(230, 33, 23, 0.2) !important;
   border-radius: var(--border-radius-md) !important;
-  padding: 14px 10px !important;
+  padding: 10px 8px !important;
   text-align: center;
   text-decoration: none;
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   cursor: pointer;
-  aspect-ratio: 1 / 1;
+  min-height: 135px;
 }
 
 .home-service-button:hover {
@@ -1934,37 +1934,41 @@ select option {
 }
 
 .home-service-icon-wrap {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
+  width: 100%;
+  height: 75px;
+  border-radius: 10px;
   background: #ffffff !important;
-  color: #e62117;
-  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   border: 1px solid rgba(230, 33, 23, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  padding: 6px;
   transition: var(--transition-smooth);
+  overflow: hidden;
 }
 
 .home-service-button:hover .home-service-icon-wrap {
-  background: #e62117 !important;
-  color: #ffffff;
+  border-color: #e62117;
+  box-shadow: 0 3px 10px rgba(230, 33, 23, 0.18);
+  transform: scale(1.02);
 }
 
 .home-service-label {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
   color: var(--text-primary) !important;
-  line-height: 1.2;
+  line-height: 1.25;
+  margin-top: auto;
 }
 
 .home-service-logo-img {
-  width: 42px;
-  height: 42px;
+  width: 100%;
+  height: 100%;
+  max-height: 65px;
   object-fit: contain;
-  border-radius: 50%;
+  border-radius: 6px;
 }
 
 .theme-toggle-btn {

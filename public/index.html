@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=2.3">
+  <link rel="stylesheet" href="style.css?v=2.4">
 </head>
 <body>
   
@@ -644,69 +644,119 @@
 
     <!-- 8. Contact Us Section -->
     <section id="contact" class="page-view">
+      <div class="section-title">
+        <span class="section-tag"><i class="fa-solid fa-headset"></i> 24/7 DIASPORA HELPDESK</span>
+        <h2 data-key="contact-head">Connect With Us</h2>
+        <p data-key="contact-sub">Have urgent enquiries or requests? Get in touch with our liaison helpdesk instantly.</p>
+      </div>
+
       <div class="contact-grid">
         <!-- Details Column -->
         <div class="contact-info-panel glass-panel">
-          <h2 data-key="contact-head">Connect With Us</h2>
-          <p class="lead" data-key="contact-sub">Have urgent enquiries or requests? Get in touch with our helpdesk instantly.</p>
+          <div class="contact-card-header">
+            <h3>Official Liaison Offices</h3>
+            <p>Direct representation & documentation assistance network across Nigeria and the Diaspora.</p>
+          </div>
           
           <div class="contact-methods">
             <div class="method-item">
-              <i class="fa-solid fa-location-dot"></i>
-              <div>
-                <h5 data-key="c-head-office">Head Office</h5>
+              <div class="method-icon-box"><i class="fa-solid fa-building-flag"></i></div>
+              <div class="method-text">
+                <h5 data-key="c-head-office">Head Office (Abuja)</h5>
                 <p>Wuse Zone 5, Abuja, Federal Capital Territory, Nigeria</p>
               </div>
             </div>
+
             <div class="method-item">
-              <i class="fa-solid fa-location-arrow"></i>
-              <div>
-                <h5 data-key="c-branch-office">Branch Office</h5>
+              <div class="method-icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
+              <div class="method-text">
+                <h5 data-key="c-branch-office">Regional Processing Hub (Kano)</h5>
                 <p>54 Guda Abdullahi Street, Farm Center, Kano State, Nigeria</p>
               </div>
             </div>
+
             <div class="method-item">
-              <i class="fa-solid fa-envelope-open"></i>
-              <div>
+              <div class="method-icon-box"><i class="fa-solid fa-envelope-circle-check"></i></div>
+              <div class="method-text">
                 <h5>Email Helpdesk</h5>
                 <p><a href="mailto:Nigeriadiasporaservices@gmail.com">Nigeriadiasporaservices@gmail.com</a></p>
               </div>
             </div>
+
             <div class="method-item">
-              <i class="fa-solid fa-phone-volume"></i>
-              <div>
-                 <h5>Call Support</h5>
+              <div class="method-icon-box"><i class="fa-solid fa-phone-volume"></i></div>
+              <div class="method-text">
+                 <h5>Call & WhatsApp Hotline</h5>
                  <p><a href="tel:+2348057300300">+234 805 730 0300</a></p>
+              </div>
+            </div>
+
+            <div class="method-item">
+              <div class="method-icon-box"><i class="fa-solid fa-clock"></i></div>
+              <div class="method-text">
+                 <h5>Processing Hours</h5>
+                 <p>Monday – Friday: 8:00 AM – 6:00 PM (GMT+1)</p>
               </div>
             </div>
           </div>
 
-          <div class="social-channels">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <div class="social-channels-wrap">
+            <span class="social-label">Follow Official Channels:</span>
+            <div class="social-channels">
+              <a href="#" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="social-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+              <a href="#" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
           </div>
         </div>
 
         <!-- Contact Form Column -->
         <div class="contact-form-panel glass-panel">
-          <h3 data-key="c-send-msg">Send Us an Inquiry</h3>
+          <div class="contact-card-header">
+            <h3 data-key="c-send-msg">Send Us an Inquiry</h3>
+            <p class="form-subtitle">Fill out the request form below and our team will respond within 2 hours.</p>
+          </div>
+          
           <form id="contact-inquiry-form" onsubmit="handleInquiry(event)">
             <div class="form-group">
-              <label for="c-name">Full Name</label>
-              <input type="text" id="c-name" placeholder="John Doe" required>
+              <label for="c-name"><i class="fa-solid fa-user"></i> Full Name</label>
+              <input type="text" id="c-name" placeholder="e.g. John Okonkwo" required>
             </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="c-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                <input type="email" id="c-email" placeholder="name@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="c-phone"><i class="fa-solid fa-phone"></i> Phone / WhatsApp</label>
+                <input type="tel" id="c-phone" placeholder="+44 / +1 / +234...">
+              </div>
+            </div>
+
             <div class="form-group">
-              <label for="c-email">Email Address</label>
-              <input type="email" id="c-email" placeholder="john@example.com" required>
+              <label for="c-service"><i class="fa-solid fa-list-check"></i> Service Category</label>
+              <select id="c-service">
+                <option value="General Inquiry">General Inquiry / Consultation</option>
+                <option value="Passport Support">Passport Support</option>
+                <option value="NIN & BVN Support">NIN & BVN Support</option>
+                <option value="NDLEA Clearance">NDLEA Clearance</option>
+                <option value="MOFA Authentication">MOFA Authentication</option>
+                <option value="Police Clearance">Police Clearance</option>
+                <option value="CAC Registrations">CAC Registrations</option>
+                <option value="Court & Property Documents">Court & Property Documents</option>
+              </select>
             </div>
+
             <div class="form-group">
-              <label for="c-msg">Message / Detail</label>
-              <textarea id="c-msg" rows="5" placeholder="Detail your inquiries..." required></textarea>
+              <label for="c-msg"><i class="fa-solid fa-message"></i> Message / Details</label>
+              <textarea id="c-msg" rows="4" placeholder="Describe the document assistance or questions you need help with..." required></textarea>
             </div>
-            <button type="submit" class="btn-primary w-100"><i class="fa-solid fa-paper-plane"></i> Send Inquiry</button>
+
+            <button type="submit" class="btn-primary w-100"><i class="fa-solid fa-paper-plane"></i> Send Inquiry Now</button>
+            <p class="form-security-note"><i class="fa-solid fa-lock"></i> 100% Secure & Confidential Data Processing</p>
           </form>
         </div>
       </div>
@@ -1144,6 +1194,6 @@
   </div>
 
   <!-- Core Javascript -->
-  <script src="app.js?v=2.3"></script>
+  <script src="app.js?v=2.4"></script>
 </body>
 </html>

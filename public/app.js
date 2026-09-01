@@ -429,20 +429,25 @@ function syncSessionUI() {
   const portalLink = document.getElementById('floating-portal-link');
   
   if (authToken && currentUser) {
-    btn.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i> <span>Sign Out</span>`;
-    btn.onclick = handleLogout;
+    btn.classList.add('auth-active');
     portalLink.style.display = 'flex';
     
     // Check if admin
     if (currentUser.isAdmin) {
-      btn.innerHTML = `<i class="fa-solid fa-user-shield"></i> <span>Admin Panel</span>`;
+      btn.classList.add('btn-admin');
+      btn.innerHTML = `<i class="fa-solid fa-user-shield"></i> <span class="auth-btn-label">Admin</span>`;
       btn.onclick = () => { window.location.hash = '#admin-dashboard'; };
+    } else {
+      btn.classList.remove('btn-admin');
+      btn.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i> <span class="auth-btn-label">Sign Out</span>`;
+      btn.onclick = handleLogout;
     }
     
     document.getElementById('apply-auth-alert').style.display = 'none';
     document.getElementById('apply-form').style.display = 'block';
   } else {
-    btn.innerHTML = `<i class="fa-solid fa-user-circle"></i> <span data-key="nav-login">Sign In</span>`;
+    btn.classList.remove('auth-active', 'btn-admin');
+    btn.innerHTML = `<i class="fa-solid fa-user-circle"></i> <span class="auth-btn-label" data-key="nav-login">Sign In</span>`;
     btn.onclick = openAuthModal;
     portalLink.style.display = 'none';
     

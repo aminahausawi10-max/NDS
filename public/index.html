@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=2.1">
+  <link rel="stylesheet" href="style.css?v=2.2">
 </head>
 <body>
   
@@ -33,11 +33,14 @@
     <div class="header-container">
       <a href="#home" class="logo">
         <img src="./logo.png?v=1.3" alt="Nigeria Diaspora Services Logo">
-        <span>NDS</span>
+        <div class="logo-text-group">
+          <span class="logo-title">NDS</span>
+          <span class="logo-tagline">Nigeria Diaspora Services</span>
+        </div>
       </a>
       
       <!-- Primary Navigation Bar (Desktop) -->
-      <nav class="desktop-nav">
+      <nav class="desktop-nav" id="desktop-nav">
         <a href="#home" class="nav-link active" data-key="nav-home">Home</a>
         <a href="#about" class="nav-link" data-key="nav-about">About Us</a>
         <a href="#services" class="nav-link" data-key="nav-services">Services</a>
@@ -53,16 +56,16 @@
           <i class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- Language Switcher -->
-        <div class="language-dropdown">
-          <button class="lang-btn btn-glass">
+        <!-- Language Switcher Dropdown -->
+        <div class="language-dropdown" id="lang-dropdown">
+          <button class="lang-btn btn-glass" onclick="toggleLangDropdown(event)" type="button">
             <i class="fa-solid fa-globe"></i> <span id="current-lang">EN</span> <i class="fa-solid fa-chevron-down"></i>
           </button>
-          <div class="dropdown-content">
-            <button onclick="setLanguage('en')">English</button>
-            <button onclick="setLanguage('ha')">Hausa</button>
-            <button onclick="setLanguage('ar')">العربية</button>
-            <button onclick="setLanguage('fr')">Français</button>
+          <div class="dropdown-content" id="lang-dropdown-menu">
+            <button onclick="setLanguage('en')" type="button"><span>English</span> <span class="lang-code">EN</span></button>
+            <button onclick="setLanguage('ha')" type="button"><span>Hausa</span> <span class="lang-code">HA</span></button>
+            <button onclick="setLanguage('ar')" type="button"><span>العربية</span> <span class="lang-code">AR</span></button>
+            <button onclick="setLanguage('fr')" type="button"><span>Français</span> <span class="lang-code">FR</span></button>
           </div>
         </div>
 
@@ -72,7 +75,25 @@
         </button>
 
         <a href="#apply" class="btn-primary apply-cta" data-key="btn-apply-service">Apply Now</a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" onclick="toggleMobileNav()" title="Toggle Navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
+    </div>
+
+    <!-- Mobile Slide Navigation Panel -->
+    <div class="mobile-nav-panel" id="mobile-nav-panel">
+      <a href="#home" class="mobile-nav-link active" onclick="closeMobileNav()"><i class="fa-solid fa-house"></i> <span data-key="nav-home">Home</span></a>
+      <a href="#about" class="mobile-nav-link" onclick="closeMobileNav()"><i class="fa-solid fa-info-circle"></i> <span data-key="nav-about">About Us</span></a>
+      <a href="#services" class="mobile-nav-link" onclick="closeMobileNav()"><i class="fa-solid fa-briefcase"></i> <span data-key="nav-services">Services</span></a>
+      <a href="#how-it-works" class="mobile-nav-link" onclick="closeMobileNav()"><i class="fa-solid fa-gear"></i> <span data-key="nav-how">How It Works</span></a>
+      <a href="#track" class="mobile-nav-link" onclick="closeMobileNav()"><i class="fa-solid fa-magnifying-glass"></i> <span data-key="nav-track">Track Application</span></a>
+      <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()"><i class="fa-solid fa-circle-question"></i> <span data-key="nav-faq">FAQ</span></a>
+      <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()"><i class="fa-solid fa-envelope"></i> <span data-key="nav-contact">Contact Us</span></a>
+      <div class="mobile-nav-divider"></div>
+      <a href="#apply" class="btn-primary w-100 text-center" onclick="closeMobileNav()" data-key="btn-apply-service">Apply For Service</a>
     </div>
   </header>
 
@@ -100,14 +121,22 @@
     <!-- 1. Home Section -->
     <section id="home" class="page-view active">
       <div class="hero-section">
+        <div class="hero-badge-pill">
+          <i class="fa-solid fa-shield-halved"></i> <span>Trusted Documentation Liaison for Nigerians Worldwide</span>
+        </div>
         <h1 class="hero-title animate-pop" data-key="hero-title">NIGERIA DIASPORA SERVICES</h1>
         <p class="hero-subtitle" data-key="hero-subtitle">Documentation Processing Assistant & Diaspora Support Services</p>
         <p class="hero-desc" data-key="hero-desc">
           Professional, secure, and reliable support for Nigerians in the Diaspora with applications, authentication, verification, and essential government documentation back home.
         </p>
         <div class="hero-buttons">
-          <a href="#apply" class="btn-primary btn-large" data-key="btn-apply-service">Apply For Service</a>
-          <a href="#contact" class="btn-glass btn-large" data-key="btn-contact-us">Contact Us</a>
+          <a href="#apply" class="btn-primary btn-large" data-key="btn-apply-service"><i class="fa-solid fa-paper-plane"></i> Apply For Service</a>
+          <a href="#contact" class="btn-glass btn-large" data-key="btn-contact-us"><i class="fa-solid fa-headset"></i> Contact Us</a>
+        </div>
+        <div class="hero-trust-badges">
+          <div class="trust-badge-item"><i class="fa-solid fa-circle-check"></i> <span>Direct Nigeria Liaison</span></div>
+          <div class="trust-badge-item"><i class="fa-solid fa-lock"></i> <span>Secure & Confidential</span></div>
+          <div class="trust-badge-item"><i class="fa-solid fa-bolt"></i> <span>Milestone Progress Tracking</span></div>
         </div>
       </div>
 
@@ -1115,6 +1144,6 @@
   </div>
 
   <!-- Core Javascript -->
-  <script src="app.js?v=2.1"></script>
+  <script src="app.js?v=2.2"></script>
 </body>
 </html>

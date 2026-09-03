@@ -1,0 +1,30 @@
+﻿# ==========================================================================
+# NDS - Apache .htaccess for cPanel / Whogohost
+# Place this in your public_html root
+# ==========================================================================
+
+Options -Indexes
+RewriteEngine On
+
+# Allow direct file access (php files, images, css, js)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Route /api/* to PHP api folder (no rewrite needed, files exist directly)
+# This block ensures clean URLs work
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
+
+# CORS Headers
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# PHP upload limits
+php_value upload_max_filesize 20M
+php_value post_max_size 25M
+php_value max_execution_time 60
+php_value memory_limit 128M

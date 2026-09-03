@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -64,8 +64,8 @@
           <div class="dropdown-content" id="lang-dropdown-menu">
             <button onclick="setLanguage('en')" type="button"><span>English</span> <span class="lang-code">EN</span></button>
             <button onclick="setLanguage('ha')" type="button"><span>Hausa</span> <span class="lang-code">HA</span></button>
-            <button onclick="setLanguage('ar')" type="button"><span>العربية</span> <span class="lang-code">AR</span></button>
-            <button onclick="setLanguage('fr')" type="button"><span>Français</span> <span class="lang-code">FR</span></button>
+            <button onclick="setLanguage('ar')" type="button"><span>Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©</span> <span class="lang-code">AR</span></button>
+            <button onclick="setLanguage('fr')" type="button"><span>FranÃ§ais</span> <span class="lang-code">FR</span></button>
           </div>
         </div>
 
@@ -695,7 +695,7 @@
               <div class="method-icon-box"><i class="fa-solid fa-clock"></i></div>
               <div class="method-text">
                  <h5>Processing Hours</h5>
-                 <p>Monday – Friday: 8:00 AM – 6:00 PM (GMT+1)</p>
+                 <p>Monday â€“ Friday: 8:00 AM â€“ 6:00 PM (GMT+1)</p>
               </div>
             </div>
           </div>
@@ -795,28 +795,54 @@
             </div>
 
             <div class="quick-services-grid">
+              <!-- 1. Passport Support -->
+              <a href="#apply?service=Passport%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><img src="./logo_passport.png" alt="Passport" class="qs-logo-img"></div>
+                <span class="quick-service-label">Passport Support</span>
+              </a>
+              <!-- 2. NIN & BVN -->
+              <a href="#apply?service=NIN%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><img src="./logo_nin_bvn.png" alt="NIN & BVN" class="qs-logo-img"></div>
+                <span class="quick-service-label">NIN &amp; BVN Support</span>
+              </a>
+              <!-- 3. MOFA Authentication -->
+              <a href="#apply?service=MOFA%20Authentication" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><img src="./logo_mofa.png" alt="MOFA" class="qs-logo-img"></div>
+                <span class="quick-service-label">MOFA Authentication</span>
+              </a>
+              <!-- 4. CAC Registrations -->
+              <a href="#apply?service=CAC%20Services" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><img src="./logo_cac.png" alt="CAC" class="qs-logo-img"></div>
+                <span class="quick-service-label">CAC Registrations</span>
+              </a>
+              <!-- 5. Police Clearance -->
               <a href="#apply?service=Police%20Clearance" class="quick-service-card">
-                <div class="quick-service-icon-wrap"><img src="./logo_police.png" alt="Police" style="width: 100%; height: 100%; max-height: 55px; object-fit: contain; border-radius: 4px;"></div>
+                <div class="quick-service-icon-wrap"><img src="./logo_police.png" alt="Police" class="qs-logo-img"></div>
                 <span class="quick-service-label">Police Clearance</span>
               </a>
+              <!-- 6. NDLEA Clearance -->
               <a href="#apply?service=NDLEA%20Certificate" class="quick-service-card">
-                <div class="quick-service-icon-wrap"><img src="./logo_ndlea.png" alt="NDLEA" style="width: 100%; height: 100%; max-height: 55px; object-fit: contain; border-radius: 4px;"></div>
+                <div class="quick-service-icon-wrap"><img src="./logo_ndlea.png" alt="NDLEA" class="qs-logo-img"></div>
                 <span class="quick-service-label">NDLEA Clearance</span>
               </a>
+              <!-- 7. Court Documents -->
               <a href="#apply?service=Court%20Documents" class="quick-service-card">
-                <div class="quick-service-icon-wrap"><img src="./logo_court.png" alt="Court" style="width: 100%; height: 100%; max-height: 55px; object-fit: contain; border-radius: 4px;"></div>
+                <div class="quick-service-icon-wrap"><img src="./logo_court.png" alt="Court" class="qs-logo-img"></div>
                 <span class="quick-service-label">Court Documents</span>
               </a>
+              <!-- 8. Labour Assistant -->
               <a href="#apply?service=Labour%20Services" class="quick-service-card">
-                <div class="quick-service-icon-wrap"><img src="./logo_labour.png" alt="Labour" style="width: 100%; height: 100%; max-height: 55px; object-fit: contain; border-radius: 4px;"></div>
+                <div class="quick-service-icon-wrap"><img src="./logo_labour.png" alt="Labour" class="qs-logo-img"></div>
                 <span class="quick-service-label">Labour Assistant</span>
               </a>
+              <!-- 9. Properties Assistant -->
               <a href="#apply?service=Contract%20Support" class="quick-service-card">
-                <div class="quick-service-icon-wrap"><img src="./logo_property.png" alt="Property" style="width: 100%; height: 100%; max-height: 55px; object-fit: contain; border-radius: 4px;"></div>
+                <div class="quick-service-icon-wrap"><img src="./logo_property.png" alt="Property" class="qs-logo-img"></div>
                 <span class="quick-service-label">Properties Assistant</span>
               </a>
+              <!-- 10. Foreign Documents -->
               <a href="#apply?service=Embassy%20Authentication" class="quick-service-card">
-                <div class="quick-service-icon-wrap"><img src="./logo_embassy.png" alt="Foreign Documents" style="width: 100%; height: 100%; max-height: 55px; object-fit: contain; border-radius: 4px;"></div>
+                <div class="quick-service-icon-wrap"><img src="./logo_embassy.png" alt="Foreign Documents" class="qs-logo-img"></div>
                 <span class="quick-service-label">Foreign Documents Assistant</span>
               </a>
             </div>
@@ -886,9 +912,10 @@
             <span>Security Administrator</span>
           </div>
           <div class="admin-nav">
-            <button class="admin-tab-btn active" onclick="switchAdminTab('overview')"><i class="fa-solid fa-gauge"></i> Overview</button>
-            <button class="admin-tab-btn" onclick="switchAdminTab('applications')"><i class="fa-solid fa-folder-tree"></i> Manage Applications</button>
-            <button class="admin-tab-btn" onclick="switchAdminTab('settings')"><i class="fa-solid fa-screwdriver-wrench"></i> Site Configurations</button>
+            <button class="admin-tab-btn active" onclick="switchAdminTab('overview', this)"><i class="fa-solid fa-gauge"></i> Overview</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('applications', this)"><i class="fa-solid fa-folder-tree"></i> Manage Applications</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('activities', this)"><i class="fa-solid fa-calendar-plus"></i> Activities &amp; Cases</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('settings', this)"><i class="fa-solid fa-screwdriver-wrench"></i> Site Configurations</button>
             <hr class="sidebar-divider">
             <button onclick="handleLogout()" class="admin-tab-btn text-danger"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
           </div>
@@ -985,6 +1012,126 @@
                   <!-- Generated Dynamically -->
                 </tbody>
               </table>
+            </div>
+          </div>
+
+
+          <!-- Admin Activities & Control Panel Tab -->
+          <div id="admin-tab-activities" class="admin-tab-content">
+
+            <!-- Section: Live Applications Stats + Controls -->
+            <h3 style="margin-bottom:6px;"><i class="fa-solid fa-chart-bar" style="color:var(--accent)"></i> Applications Control Panel</h3>
+            <p class="text-dimmed text-sm" style="margin-bottom:18px;">Live totals from the database. Use the controls below to manually log adjustments to case tracking.</p>
+
+            <div class="admin-stats-grid" style="margin-bottom:20px;">
+              <div class="stat-card-admin glass-panel">
+                <i class="fa-solid fa-cubes"></i>
+                <div>
+                  <h3 id="act-stat-total">0</h3>
+                  <p>Total Submissions</p>
+                </div>
+              </div>
+              <div class="stat-card-admin glass-panel">
+                <i class="fa-solid fa-bell text-gold"></i>
+                <div>
+                  <h3 id="act-stat-new">0</h3>
+                  <p>New (Received)</p>
+                </div>
+              </div>
+              <div class="stat-card-admin glass-panel">
+                <i class="fa-solid fa-arrows-spin text-info"></i>
+                <div>
+                  <h3 id="act-stat-processing">0</h3>
+                  <p>Processing Cases</p>
+                </div>
+              </div>
+              <div class="stat-card-admin glass-panel">
+                <i class="fa-solid fa-circle-check text-success"></i>
+                <div>
+                  <h3 id="act-stat-completed">0</h3>
+                  <p>Completed</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Manual Case Adjustment Controls -->
+            <div class="dashboard-block glass-panel" style="margin-bottom:24px;">
+              <h4 style="margin-bottom:14px;"><i class="fa-solid fa-sliders" style="color:var(--accent)"></i> Manual Case Adjustment</h4>
+              <p class="text-sm text-dimmed" style="margin-bottom:14px;">Quickly add or remove cases from tracking categories for manual reconciliation.</p>
+              <div class="form-row" style="align-items:flex-end; flex-wrap:wrap; gap:12px;">
+                <div class="form-group" style="flex:1; min-width:140px;">
+                  <label for="adj-category">Case Category</label>
+                  <select id="adj-category">
+                    <option value="total">Total Submissions</option>
+                    <option value="new">New / Received</option>
+                    <option value="processing">Processing Cases</option>
+                    <option value="completed">Completed</option>
+                  </select>
+                </div>
+                <div class="form-group" style="flex:1; min-width:120px;">
+                  <label for="adj-amount">Amount</label>
+                  <input type="number" id="adj-amount" min="1" value="1" placeholder="e.g. 5">
+                </div>
+                <div class="form-group" style="flex:1; min-width:120px;">
+                  <label for="adj-reason">Reason (optional)</label>
+                  <input type="text" id="adj-reason" placeholder="e.g. Batch import">
+                </div>
+                <div style="display:flex; gap:8px; padding-bottom:4px;">
+                  <button class="btn-primary" onclick="adjustCaseCount(1)" style="white-space:nowrap;"><i class="fa-solid fa-plus"></i> Add</button>
+                  <button class="btn-glass" onclick="adjustCaseCount(-1)" style="white-space:nowrap; color:var(--accent);"><i class="fa-solid fa-minus"></i> Remove</button>
+                </div>
+              </div>
+              <div id="adj-log-list" style="margin-top:12px; max-height:140px; overflow-y:auto;"></div>
+            </div>
+
+            <!-- Add New Activity Form -->
+            <div class="dashboard-block glass-panel" style="margin-bottom:24px;">
+              <h4 style="margin-bottom:14px;"><i class="fa-solid fa-plus-circle" style="color:var(--accent)"></i> Post New Activity / Announcement</h4>
+              <form id="add-activity-form" onsubmit="handleAddActivity(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="act-type">Activity Type *</label>
+                    <select id="act-type" required>
+                      <option value="">-- Select Type --</option>
+                      <option value="Announcement">ðŸ“¢ Announcement</option>
+                      <option value="Update">ðŸ”„ Service Update</option>
+                      <option value="Milestone">ðŸ† Milestone</option>
+                      <option value="Alert">âš ï¸ Alert</option>
+                      <option value="Notice">ðŸ“‹ Notice</option>
+                      <option value="Case Added">âž• Case Added</option>
+                      <option value="Case Closed">âœ… Case Closed</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="act-title">Activity Title *</label>
+                    <input type="text" id="act-title" placeholder="e.g. Passport Processing Backlog Cleared" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="act-body">Activity Details / Description *</label>
+                  <textarea id="act-body" rows="3" placeholder="Describe the activity, update, or announcement in detail..." required></textarea>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="act-date">Effective Date</label>
+                    <input type="date" id="act-date">
+                  </div>
+                  <div class="form-group" style="display:flex;align-items:flex-end;">
+                    <button type="submit" class="btn-primary w-100"><i class="fa-solid fa-paper-plane"></i> Post Activity</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="dashboard-block glass-panel">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+                <h4><i class="fa-solid fa-stream" style="color:var(--accent)"></i> Activity Feed <span id="act-feed-count" style="font-size:12px;color:var(--text-dimmed);font-weight:400;"></span></h4>
+                <button class="btn-glass btn-sm" onclick="clearAllActivities()" style="color:#dc2626;"><i class="fa-solid fa-trash"></i> Clear All</button>
+              </div>
+              <div id="admin-activity-feed">
+                <p class="text-dimmed text-sm text-center" style="padding:20px 0;">No activities posted yet. Use the form above to add one.</p>
+              </div>
             </div>
           </div>
 
@@ -1197,3 +1344,4 @@
   <script src="app.js?v=2.4"></script>
 </body>
 </html>
+

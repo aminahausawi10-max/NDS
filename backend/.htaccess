@@ -1,0 +1,26 @@
+﻿# ==========================================================================
+# NDS - Apache .htaccess for cPanel (Root public_html folder)
+# ==========================================================================
+
+Options -Indexes
+RewriteEngine On
+
+# Allow direct file access (PHP files, static assets)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Serve static files from /public/ folder
+RewriteRule ^$ public/index.html [L]
+RewriteRule ^(index\.html|style\.css|app\.js|logo.*\.png)$ public/$1 [L]
+
+# Headers for all requests
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# PHP settings
+php_value upload_max_filesize 20M
+php_value post_max_size 25M
+php_value max_execution_time 60

@@ -823,6 +823,7 @@ async function loadPortalData() {
       document.getElementById('portal-stat-total').innerText = '0';
       document.getElementById('portal-stat-pending').innerText = '0';
       document.getElementById('portal-stat-completed').innerText = '0';
+      applyCustomStats();
       return;
     }
 
@@ -849,6 +850,7 @@ async function loadPortalData() {
     document.getElementById('portal-stat-total').innerText = data.applications.length;
     document.getElementById('portal-stat-pending').innerText = pendingCount;
     document.getElementById('portal-stat-completed').innerText = completedCount;
+    applyCustomStats();
 
     // Load Inbox logs
     const inbox = document.getElementById('portal-inbox-list');
@@ -922,6 +924,7 @@ async function loadAdminDashboard() {
       document.getElementById('act-stat-processing').innerText = data.stats.processing;
       const completed = data.applications.filter(a => a.status === 'Completed').length;
       document.getElementById('act-stat-completed').innerText = completed;
+      applyCustomStats();
     }
 
     // Render activity feed from localStorage
@@ -1282,6 +1285,65 @@ function clearAllActivities() {
   showToast('All activities and logs cleared.');
 }
 
+// ==========================================================================
+// CUSTOM TOTAL APPLICATIONS EDIT CONTROLS
+// ==========================================================================
+function applyCustomStats() {
+  const customTotal = localStorage.getItem('nds_custom_total_applications');
+  if (customTotal !== null) {
+    const el = document.getElementById('portal-stat-total');
+    if (el) el.innerText = customTotal;
+    const actEl = document.getElementById('act-stat-total');
+    if (actEl) actEl.innerText = customTotal;
+    const adminStatEl = document.getElementById('admin-stat-total');
+    if (adminStatEl) adminStatEl.innerText = customTotal;
+  }
+}
+
+function toggleEditTotalApps() {
+  const form = document.getElementById('edit-total-apps-form');
+  const btn = document.getElementById('btn-toggle-edit-stat');
+  const input = document.getElementById('input-custom-total-apps');
+  if (!form) return;
+  const isHidden = form.style.display === 'none' || !form.style.display;
+  form.style.display = isHidden ? 'block' : 'none';
+  if (btn) {
+    btn.innerHTML = isHidden ? '<i class="fa-solid fa-xmark"></i> Close' : '<i class="fa-solid fa-pen"></i> Edit Count';
+  }
+  if (isHidden && input) {
+    const current = document.getElementById('portal-stat-total');
+    input.value = current ? current.innerText.trim() : '20';
+    input.focus();
+  }
+}
+
+function saveCustomTotalApps() {
+  const input = document.getElementById('input-custom-total-apps');
+  if (!input) return;
+  const val = parseInt(input.value);
+  if (isNaN(val) || val < 0) {
+    showToast('Please enter a valid positive number.', 'danger');
+    return;
+  }
+  localStorage.setItem('nds_custom_total_applications', val.toString());
+  applyCustomStats();
+  toggleEditTotalApps();
+  showToast(`Total Applications counter set to ${val}!`);
+}
+
+function resetCustomTotalApps() {
+  localStorage.removeItem('nds_custom_total_applications');
+  if (window.location.hash.includes('portal')) {
+    loadCustomerPortal();
+  } else if (window.location.hash.includes('admin')) {
+    loadAdminDashboard();
+  } else {
+    applyCustomStats();
+  }
+  toggleEditTotalApps();
+  showToast('Total Applications counter reset to live database count.');
+}
+
 // App Initialization
 window.addEventListener('hashchange', routeApp);
 window.addEventListener('DOMContentLoaded', () => {
@@ -1290,5 +1352,7 @@ window.addEventListener('DOMContentLoaded', () => {
   initTheme();
   renderActivityFeed();
   renderAdjLog();
+  applyCustomStats();
 });
+
 

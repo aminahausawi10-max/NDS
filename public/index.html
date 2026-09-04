@@ -148,20 +148,20 @@
           <div class="home-service-icon-wrap"><img src="./logo_mofa.png" alt="MOFA Authentication Logo" class="home-service-logo-img"></div>
           <span class="home-service-label" data-key="stat-auth">MOFA Authentication</span>
         </a>
-        <!-- 2. Foreign Documents Assistant (Embassy) -->
+        <!-- 2. NiDCOM - Nigerians in Diaspora Commission -->
+        <a href="#apply?service=NiDCOM%20Support" class="home-service-button">
+          <div class="home-service-icon-wrap"><img src="./logo_nidcom.png" alt="NiDCOM Nigerians in Diaspora Commission Logo" class="home-service-logo-img"></div>
+          <span class="home-service-label">NiDCOM (Nigerians in Diaspora Commission)</span>
+        </a>
+        <!-- 3. Foreign Documents Assistant (Embassy) -->
         <a href="#apply?service=Embassy%20Authentication" class="home-service-button">
           <div class="home-service-icon-wrap"><img src="./logo_embassy.png" alt="Foreign Documents Assistant Logo" class="home-service-logo-img"></div>
           <span class="home-service-label">Foreign Documents Assistant</span>
         </a>
-        <!-- 3. Passport Support -->
-        <a href="#apply?service=Passport%20Services" class="home-service-button">
-          <div class="home-service-icon-wrap"><img src="./logo_passport.png" alt="Passport Support Logo" class="home-service-logo-img"></div>
-          <span class="home-service-label" data-key="stat-pass">Passport Support</span>
-        </a>
-        <!-- 4. NIN & BVN Support -->
-        <a href="#apply?service=NIN%20Services" class="home-service-button">
-          <div class="home-service-icon-wrap"><img src="./logo_nin_bvn.png" alt="NIN & BVN Support Logo" class="home-service-logo-img"></div>
-          <span class="home-service-label" data-key="stat-nin">NIN & BVN Support</span>
+        <!-- 4. Passport, NIN & BVN Support -->
+        <a href="#apply?service=Passport%2C%20NIN%20%26%20BVN" class="home-service-button">
+          <div class="home-service-icon-wrap"><img src="./logo_passport_nin_bvn.png" alt="Passport, NIN & BVN Support Logo" class="home-service-logo-img"></div>
+          <span class="home-service-label" data-key="stat-pass">Passport, NIN &amp; BVN</span>
         </a>
         <!-- 5. Police Clearance -->
         <a href="#apply?service=Police%20Clearance" class="home-service-button">
@@ -454,19 +454,20 @@
             <div class="form-group">
               <label for="apply-service" data-key="lbl-service">Service Required *</label>
               <select id="apply-service" required>
-                <option value="Passport Services">Nigerian Passport Services</option>
-                <option value="NIN Services">National Identification Number (NIN)</option>
-                <option value="BVN Services">Bank Verification Number (BVN)</option>
+                <option value="MOFA Authentication">MOFA Document Authentication</option>
+                <option value="NiDCOM Support">NiDCOM - Nigerians in Diaspora Commission</option>
+                <option value="Embassy Authentication">Foreign Documents Assistant (Embassy)</option>
+                <option value="Passport, NIN & BVN">Passport, NIN &amp; BVN Support</option>
+                <option value="Police Clearance">Police Clearance</option>
+                <option value="NDLEA Certificate">NDLEA Clearance</option>
                 <option value="CAC Services">CAC Corporate Registration</option>
-                <option value="Consulate Support">Embassy & Consulate Support</option>
-                <optgroup label="MOFA Document Authentication">
-                  <option value="Police Clearance">Police Clearance</option>
-                  <option value="NDLEA Certificate">NDLEA Clearance</option>
-                  <option value="Court Documents">Court Documents</option>
-                  <option value="Labour Services">Labour Assistant</option>
-                  <option value="Contract Support">Properties Assistant</option>
-                  <option value="Embassy Authentication">Foreign Documents Assistant</option>
-                </optgroup>
+                <option value="Court Documents">Court Documents</option>
+                <option value="Labour Services">Labour Assistant</option>
+                <option value="Contract Support">Properties Assistant</option>
+                <!-- Legacy mappings for backward compatibility -->
+                <option value="Passport Services" style="display:none;">Nigerian Passport Services</option>
+                <option value="NIN Services" style="display:none;">National Identification Number (NIN)</option>
+                <option value="BVN Services" style="display:none;">Bank Verification Number (BVN)</option>
               </select>
             </div>
             <div class="form-group">
@@ -800,20 +801,20 @@
                 <div class="quick-service-icon-wrap"><img src="./logo_mofa.png" alt="MOFA" class="qs-logo-img"></div>
                 <span class="quick-service-label">MOFA Authentication</span>
               </a>
-              <!-- 2. Foreign Documents Assistant (Embassy) -->
+              <!-- 2. NiDCOM - Nigerians in Diaspora Commission -->
+              <a href="#apply?service=NiDCOM%20Support" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><img src="./logo_nidcom.png" alt="NiDCOM" class="qs-logo-img"></div>
+                <span class="quick-service-label">NiDCOM (Diaspora Commission)</span>
+              </a>
+              <!-- 3. Foreign Documents Assistant (Embassy) -->
               <a href="#apply?service=Embassy%20Authentication" class="quick-service-card">
                 <div class="quick-service-icon-wrap"><img src="./logo_embassy.png" alt="Foreign Documents" class="qs-logo-img"></div>
                 <span class="quick-service-label">Foreign Documents Assistant</span>
               </a>
-              <!-- 3. Passport Support -->
-              <a href="#apply?service=Passport%20Services" class="quick-service-card">
-                <div class="quick-service-icon-wrap"><img src="./logo_passport.png" alt="Passport" class="qs-logo-img"></div>
-                <span class="quick-service-label">Passport Support</span>
-              </a>
-              <!-- 4. NIN & BVN Support -->
-              <a href="#apply?service=NIN%20Services" class="quick-service-card">
-                <div class="quick-service-icon-wrap"><img src="./logo_nin_bvn.png" alt="NIN & BVN" class="qs-logo-img"></div>
-                <span class="quick-service-label">NIN &amp; BVN Support</span>
+              <!-- 4. Passport, NIN & BVN Support -->
+              <a href="#apply?service=Passport%2C%20NIN%20%26%20BVN" class="quick-service-card">
+                <div class="quick-service-icon-wrap"><img src="./logo_passport_nin_bvn.png" alt="Passport, NIN & BVN" class="qs-logo-img"></div>
+                <span class="quick-service-label">Passport, NIN &amp; BVN</span>
               </a>
               <!-- 5. Police Clearance -->
               <a href="#apply?service=Police%20Clearance" class="quick-service-card">

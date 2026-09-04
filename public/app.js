@@ -395,9 +395,15 @@ function routeApp() {
   // Handle service queries from services card shortcuts
   if (cleanHash === '#apply') {
     const params = new URLSearchParams(window.location.hash.split('?')[1] || '');
-    const serviceName = params.get('service');
+    let serviceName = params.get('service');
     if (serviceName) {
-      document.getElementById('apply-service').value = serviceName;
+      if (serviceName === 'Passport Services' || serviceName === 'NIN Services' || serviceName === 'BVN Services') {
+        serviceName = 'Passport, NIN & BVN';
+      }
+      const selectElem = document.getElementById('apply-service');
+      if (selectElem) {
+        selectElem.value = serviceName;
+      }
     }
   }
 

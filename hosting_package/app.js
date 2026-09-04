@@ -33,7 +33,7 @@ const dictionary = {
     'hero-subtitle': 'Documentation Processing Assistant & Diaspora Support Services',
     'hero-desc': 'Professional, secure, and reliable support for Nigerians in the Diaspora with applications, authentication, verification, and essential government documentation back home.',
     'btn-apply-service': 'Apply For Service', 'btn-contact-us': 'Contact Us', 'btn-apply-short': 'Apply',
-    'stat-pass': 'Passport Support', 'stat-pass-desc': 'Passport renewals & fresh application processing guidance.',
+    'stat-pass': 'Passport, NIN / BVN', 'stat-pass-desc': 'Passport renewals, NIN verification & BVN processing guidance.',
     'stat-nin': 'NIN & BVN Support', 'stat-nin-desc': 'Verification, corrections, and registry support in Nigeria.',
     'stat-cac': 'CAC Registrations', 'stat-cac-desc': 'Register businesses, entities, and corporate document filing.',
     'stat-auth': 'MOFA Authentication',
@@ -397,8 +397,8 @@ function routeApp() {
     const params = new URLSearchParams(window.location.hash.split('?')[1] || '');
     let serviceName = params.get('service');
     if (serviceName) {
-      if (serviceName === 'Passport Services' || serviceName === 'NIN Services' || serviceName === 'BVN Services') {
-        serviceName = 'Passport, NIN & BVN';
+      if (serviceName === 'Passport Services' || serviceName === 'NIN Services' || serviceName === 'BVN Services' || serviceName === 'Passport, NIN & BVN') {
+        serviceName = 'Passport, NIN / BVN';
       }
       const selectElem = document.getElementById('apply-service');
       if (selectElem) {

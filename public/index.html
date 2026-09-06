@@ -16,6 +16,14 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- PWA Meta Tags & Manifest -->
+  <meta name="theme-color" content="#0c1017">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NDS">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css?v=9.0">
 </head>
@@ -1366,6 +1374,20 @@
 
   <!-- Core Javascript -->
   <script src="app.js?v=2.4"></script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./sw.js')
+          .then(function(registration) {
+            console.log('NDS PWA ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+            console.log('NDS PWA ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
 

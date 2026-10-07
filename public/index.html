@@ -31,9 +31,35 @@
   <link rel="apple-touch-icon" href="./icon-192.png">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=9.0">
+  <link rel="stylesheet" href="style.css?v=10.0">
 </head>
 <body>
+
+  <!-- PWA Install Gate -->
+  <div id="pwa-install-gate" class="pwa-gate">
+    <div class="pwa-gate-content">
+      <img src="./icon-192.png" alt="NDS App Logo" class="pwa-gate-logo">
+      <h2>App Installation Required</h2>
+      <p>To access the Nigerian Diaspora Services platform, you must install our secure web application to your device.</p>
+      
+      <button id="pwa-install-btn" class="btn-install">
+        <i class="fa-solid fa-download"></i> Install App Now
+      </button>
+      
+      <div id="pwa-ios-instructions" class="pwa-ios-instructions">
+        <strong>iOS Users:</strong><br><br>
+        1. Tap the <strong>Share</strong> button <i class="fa-solid fa-arrow-up-from-bracket"></i> at the bottom of your screen.<br><br>
+        2. Scroll down and tap <strong>Add to Home Screen</strong> <i class="fa-regular fa-square-plus"></i>.<br><br>
+        3. Open the app from your home screen to continue.
+      </div>
+
+      <div id="pwa-default-instructions" class="pwa-default-instructions">
+        Please wait, preparing secure installation...<br>
+        (If nothing happens, please check your browser settings or use Google Chrome/Safari).
+      </div>
+    </div>
+  </div>
+
   
   <!-- Dynamic Gradient Background & Background Blobs -->
   <div class="bg-gradient-shapes">

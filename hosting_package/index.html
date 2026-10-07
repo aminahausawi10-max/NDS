@@ -31,7 +31,18 @@
   <link rel="apple-touch-icon" href="./icon-192.png">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=10.0">
+  <link rel="stylesheet" href="style.css?v=11.0">
+  <!-- Instant PWA Mode Check -->
+  <script>
+    (function() {
+      var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true || (document.referrer && document.referrer.includes('android-app://'));
+      var isInstalled = false;
+      try { isInstalled = localStorage.getItem('nds_app_installed') === 'true'; } catch(e) {}
+      if (isStandalone || isInstalled) {
+        document.documentElement.classList.add('pwa-installed');
+      }
+    })();
+  </script>
 </head>
 <body>
 
@@ -45,22 +56,30 @@
       <button id="pwa-install-btn" class="btn-install">
         <i class="fa-solid fa-download"></i> Install App Now
       </button>
+
+      <button id="pwa-open-website-btn" class="btn-open-site" style="display: none;">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Open Website
+      </button>
       
-      <div id="pwa-ios-instructions" class="pwa-ios-instructions">
-        <strong>iOS Users:</strong><br><br>
-        1. Tap the <strong>Share</strong> button <i class="fa-solid fa-arrow-up-from-bracket"></i> at the bottom of your screen.<br><br>
+      <div id="pwa-ios-instructions" class="pwa-ios-instructions" style="display: none; margin-top: 15px;">
+        <strong>iOS (iPhone / iPad) Users:</strong><br><br>
+        1. Tap the <strong>Share</strong> button <i class="fa-solid fa-arrow-up-from-bracket"></i> at the bottom of Safari.<br><br>
         2. Scroll down and tap <strong>Add to Home Screen</strong> <i class="fa-regular fa-square-plus"></i>.<br><br>
-        3. Open the app from your home screen to continue.
+        3. Once added, tap below to open the website:
+        <button id="pwa-ios-continue-btn" class="btn-open-site" style="margin-top: 12px; background: #008751; color: #fff; border: none;">
+          <i class="fa-solid fa-check"></i> Open Website
+        </button>
       </div>
 
-      <div id="pwa-default-instructions" class="pwa-default-instructions">
-        Please wait, preparing secure installation...<br>
-        (If nothing happens, please check your browser settings or use Google Chrome/Safari).
+      <div id="pwa-default-instructions" class="pwa-default-instructions" style="display: none; margin-top: 15px;">
+        <p style="margin: 0 0 10px 0; color: #374151;">If the automatic prompt does not appear, look for the install icon in your address bar or select <strong>"Install app"</strong> in your browser menu.</p>
+        <button id="pwa-fallback-open-btn" class="btn-open-site" style="margin-top: 8px;">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Open Website
+        </button>
       </div>
     </div>
   </div>
 
-  
   <!-- Dynamic Gradient Background & Background Blobs -->
   <div class="bg-gradient-shapes">
     <div class="shape shape-1"></div>
@@ -1407,7 +1426,7 @@
   <!-- Core Javascript -->
   <script src="app.js?v=2.4"></script>
   
-  <!-- PWA Service Worker Registration -->
+  <!-- PWA Service Worker Registration & Install Gate Logic -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
@@ -1419,7 +1438,96 @@
           });
       });
     }
+
+    // PWA Install Gate & Auto-Open Logic
+    (function() {
+      let deferredPrompt = null;
+      const gate = document.getElementById('pwa-install-gate');
+      const installBtn = document.getElementById('pwa-install-btn');
+      const openWebsiteBtn = document.getElementById('pwa-open-website-btn');
+      const iosInstructions = document.getElementById('pwa-ios-instructions');
+      const iosContinueBtn = document.getElementById('pwa-ios-continue-btn');
+      const defaultInstructions = document.getElementById('pwa-default-instructions');
+      const fallbackOpenBtn = document.getElementById('pwa-fallback-open-btn');
+
+      function isStandalone() {
+        return window.matchMedia('(display-mode: standalone)').matches || 
+               window.navigator.standalone === true ||
+               (document.referrer && document.referrer.includes('android-app://'));
+      }
+
+      function openWebsite() {
+        try {
+          localStorage.setItem('nds_app_installed', 'true');
+        } catch (e) {}
+        document.documentElement.classList.add('pwa-installed');
+        if (gate) {
+          gate.style.display = 'none';
+        }
+        document.body.style.overflow = 'auto';
+      }
+
+      // Check if already installed
+      let alreadyInstalled = false;
+      try {
+        alreadyInstalled = localStorage.getItem('nds_app_installed') === 'true';
+      } catch (e) {}
+
+      if (isStandalone() || alreadyInstalled) {
+        openWebsite();
+        return;
+      } else {
+        document.body.style.overflow = 'hidden';
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+          if (installBtn) installBtn.style.display = 'none';
+          if (iosInstructions) iosInstructions.style.display = 'block';
+        }
+      }
+
+      // Capture install prompt
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installBtn) installBtn.style.display = 'block';
+        if (iosInstructions) iosInstructions.style.display = 'none';
+        if (defaultInstructions) defaultInstructions.style.display = 'none';
+      });
+
+      // Handle install button click -> Trigger install AND immediately open website!
+      if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+          if (deferredPrompt) {
+            try {
+              deferredPrompt.prompt();
+              await deferredPrompt.userChoice;
+            } catch (e) {
+              console.log(e);
+            }
+            deferredPrompt = null;
+          }
+          // In all cases, open the website!
+          openWebsite();
+        });
+      }
+
+      // Automatically open the website whenever the app finishes installing
+      window.addEventListener('appinstalled', () => {
+        openWebsite();
+      });
+
+      // Action buttons to open website
+      if (openWebsiteBtn) openWebsiteBtn.addEventListener('click', openWebsite);
+      if (iosContinueBtn) iosContinueBtn.addEventListener('click', openWebsite);
+      if (fallbackOpenBtn) fallbackOpenBtn.addEventListener('click', openWebsite);
+
+      // Periodic check
+      setInterval(() => {
+        if (isStandalone()) {
+          openWebsite();
+        }
+      }, 1000);
+    })();
   </script>
 </body>
 </html>
-

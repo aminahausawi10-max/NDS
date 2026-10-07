@@ -2817,3 +2817,27 @@ body.dark-theme .portal-table th {
   vertical-align: middle;
   margin: 0 5px;
 }
+
+html.pwa-installed #pwa-install-gate {
+  display: none !important;
+}
+.pwa-gate .btn-open-site {
+  background: transparent;
+  color: #008751;
+  border: 1.5px solid #008751;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.pwa-gate .btn-open-site:hover {
+  background: rgba(0, 135, 81, 0.08);
+}

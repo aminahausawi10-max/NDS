@@ -31,14 +31,22 @@
   <link rel="apple-touch-icon" href="./icon-192.png">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=11.0">
+  <link rel="stylesheet" href="style.css?v=12.0">
   <!-- Instant PWA Mode Check -->
   <script>
     (function() {
-      var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true || (document.referrer && document.referrer.includes('android-app://'));
-      var isInstalled = false;
-      try { isInstalled = localStorage.getItem('nds_app_installed') === 'true'; } catch(e) {}
-      if (isStandalone || isInstalled) {
+      var urlParams = new URLSearchParams(window.location.search);
+      var isStandalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || 
+                         window.navigator.standalone === true || 
+                         urlParams.get('source') === 'pwa' || 
+                         (document.referrer && document.referrer.includes('android-app://'));
+      var isUnlocked = false;
+      try {
+        isUnlocked = sessionStorage.getItem('nds_access_unlocked') === 'true';
+      } catch(e) {}
+
+      // If running as the installed standalone app OR unlocked in this browsing session:
+      if ((isStandalone || isUnlocked) && !urlParams.has('force')) {
         document.documentElement.classList.add('pwa-installed');
       }
     })();
@@ -50,33 +58,80 @@
   <div id="pwa-install-gate" class="pwa-gate">
     <div class="pwa-gate-content">
       <img src="./icon-192.png" alt="NDS App Logo" class="pwa-gate-logo">
-      <h2>App Installation Required</h2>
-      <p>To access the Nigerian Diaspora Services platform, you must install our secure web application to your device.</p>
+      <div class="pwa-badge"><i class="fa-solid fa-shield-halved"></i> Official Diaspora App</div>
+      <h2>Install NDS App</h2>
+      <p>Install the official Nigerian Diaspora Services application on your device to access document support, NIN, BVN, passport services, and application tracking.</p>
       
-      <button id="pwa-install-btn" class="btn-install">
-        <i class="fa-solid fa-download"></i> Install App Now
+      <button id="pwa-install-btn" class="btn-install" type="button">
+        <i class="fa-solid fa-download"></i> <span id="pwa-install-btn-text">Install App to Access Website</span>
       </button>
 
-      <button id="pwa-open-website-btn" class="btn-open-site" style="display: none;">
-        <i class="fa-solid fa-arrow-right-to-bracket"></i> Open Website
+      <button id="pwa-enter-website-btn" class="btn-open-site" type="button">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> <span>I Have Installed the App ➔ Enter Website</span>
       </button>
       
-      <div id="pwa-ios-instructions" class="pwa-ios-instructions" style="display: none; margin-top: 15px;">
-        <strong>iOS (iPhone / iPad) Users:</strong><br><br>
-        1. Tap the <strong>Share</strong> button <i class="fa-solid fa-arrow-up-from-bracket"></i> at the bottom of Safari.<br><br>
-        2. Scroll down and tap <strong>Add to Home Screen</strong> <i class="fa-regular fa-square-plus"></i>.<br><br>
-        3. Once added, tap below to open the website:
-        <button id="pwa-ios-continue-btn" class="btn-open-site" style="margin-top: 12px; background: #008751; color: #fff; border: none;">
-          <i class="fa-solid fa-check"></i> Open Website
+      <!-- iOS Safari Instructions -->
+      <div id="pwa-ios-instructions" class="pwa-instructions-box">
+        <div class="pwa-instructions-title">
+          <i class="fa-brands fa-apple"></i> <span>To install on iPhone / iPad (Safari):</span>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">1</div>
+          <span>Tap the <strong>Share</strong> button <i class="fa-solid fa-arrow-up-from-bracket"></i> at the bottom of Safari.</span>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">2</div>
+          <span>Scroll down and tap <strong>Add to Home Screen</strong> <i class="fa-regular fa-square-plus"></i>.</span>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">3</div>
+          <span>Tap <strong>Add</strong> in the top-right corner.</span>
+        </div>
+        <button id="pwa-ios-continue-btn" class="btn-open-site" type="button" style="background: #008751; color: white; border: none; margin-top: 14px;">
+          <i class="fa-solid fa-check"></i> I've Added It ➔ Enter Website
         </button>
       </div>
 
-      <div id="pwa-default-instructions" class="pwa-default-instructions" style="display: none; margin-top: 15px;">
-        <p style="margin: 0 0 10px 0; color: #374151;">If the automatic prompt does not appear, look for the install icon in your address bar or select <strong>"Install app"</strong> in your browser menu.</p>
-        <button id="pwa-fallback-open-btn" class="btn-open-site" style="margin-top: 8px;">
-          <i class="fa-solid fa-arrow-right-to-bracket"></i> Open Website
+      <!-- Android Chrome Instructions -->
+      <div id="pwa-android-instructions" class="pwa-instructions-box" style="border-color: #008751;">
+        <div class="pwa-instructions-title">
+          <i class="fa-brands fa-android" style="color: #008751;"></i> <span>To install on Android (Chrome):</span>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">1</div>
+          <span>Tap the <strong>three dots menu (⋮)</strong> at the top right of Chrome.</span>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">2</div>
+          <span>Select <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</span>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">3</div>
+          <span>Tap <strong>Install</strong> to add NDS directly to your home screen.</span>
+        </div>
+        <button id="pwa-android-continue-btn" class="btn-open-site" type="button" style="background: #008751; color: white; border: none; margin-top: 14px;">
+          <i class="fa-solid fa-check"></i> I've Installed It ➔ Enter Website
         </button>
       </div>
+
+      <!-- Desktop Instructions -->
+      <div id="pwa-desktop-instructions" class="pwa-instructions-box" style="border-color: #2563eb;">
+        <div class="pwa-instructions-title">
+          <i class="fa-solid fa-laptop" style="color: #2563eb;"></i> <span>To install on Computer (Chrome / Edge):</span>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">1</div>
+          <span>Look at the right side of your <strong>browser address bar</strong> at the top.</span>
+        </div>
+        <div class="pwa-step">
+          <div class="pwa-step-num">2</div>
+          <span>Click the <strong>Install App icon</strong> (<i class="fa-solid fa-download"></i>).</span>
+        </div>
+        <button id="pwa-desktop-continue-btn" class="btn-open-site" type="button" style="background: #008751; color: white; border: none; margin-top: 14px;">
+          <i class="fa-solid fa-check"></i> I've Installed It ➔ Enter Website
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -1432,99 +1487,150 @@
       window.addEventListener('load', function() {
         navigator.serviceWorker.register('./sw.js')
           .then(function(registration) {
-            console.log('NDS PWA ServiceWorker registration successful with scope: ', registration.scope);
-          }, function(err) {
-            console.log('NDS PWA ServiceWorker registration failed: ', err);
+            console.log('NDS PWA ServiceWorker registered with scope:', registration.scope);
+          })
+          .catch(function(err) {
+            console.log('NDS PWA ServiceWorker registration note:', err);
           });
       });
     }
 
-    // PWA Install Gate & Auto-Open Logic
+    // PWA Install Gate & Access Logic
     (function() {
       let deferredPrompt = null;
       const gate = document.getElementById('pwa-install-gate');
       const installBtn = document.getElementById('pwa-install-btn');
-      const openWebsiteBtn = document.getElementById('pwa-open-website-btn');
+      const installBtnText = document.getElementById('pwa-install-btn-text');
+      const enterWebsiteBtn = document.getElementById('pwa-enter-website-btn');
       const iosInstructions = document.getElementById('pwa-ios-instructions');
       const iosContinueBtn = document.getElementById('pwa-ios-continue-btn');
-      const defaultInstructions = document.getElementById('pwa-default-instructions');
-      const fallbackOpenBtn = document.getElementById('pwa-fallback-open-btn');
+      const androidInstructions = document.getElementById('pwa-android-instructions');
+      const androidContinueBtn = document.getElementById('pwa-android-continue-btn');
+      const desktopInstructions = document.getElementById('pwa-desktop-instructions');
+      const desktopContinueBtn = document.getElementById('pwa-desktop-continue-btn');
 
-      function isStandalone() {
-        return window.matchMedia('(display-mode: standalone)').matches || 
+      function isInStandaloneMode() {
+        var urlParams = new URLSearchParams(window.location.search);
+        return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || 
                window.navigator.standalone === true ||
+               urlParams.get('source') === 'pwa' ||
                (document.referrer && document.referrer.includes('android-app://'));
       }
 
-      function openWebsite() {
+      function grantAccess() {
         try {
+          sessionStorage.setItem('nds_access_unlocked', 'true');
           localStorage.setItem('nds_app_installed', 'true');
-        } catch (e) {}
+        } catch(e) {}
         document.documentElement.classList.add('pwa-installed');
         if (gate) {
           gate.style.display = 'none';
         }
         document.body.style.overflow = 'auto';
-      }
-
-      // Check if already installed
-      let alreadyInstalled = false;
-      try {
-        alreadyInstalled = localStorage.getItem('nds_app_installed') === 'true';
-      } catch (e) {}
-
-      if (isStandalone() || alreadyInstalled) {
-        openWebsite();
-        return;
-      } else {
-        document.body.style.overflow = 'hidden';
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {
-          if (installBtn) installBtn.style.display = 'none';
-          if (iosInstructions) iosInstructions.style.display = 'block';
+        if (installBtnText) {
+          installBtnText.innerText = "✅ Access Granted! Opening...";
         }
       }
 
-      // Capture install prompt
+      // Check if running in standalone mode OR unlocked in this session
+      var isUnlocked = false;
+      try {
+        isUnlocked = sessionStorage.getItem('nds_access_unlocked') === 'true';
+      } catch(e) {}
+
+      var urlParams = new URLSearchParams(window.location.search);
+      if ((isInStandaloneMode() || isUnlocked) && !urlParams.has('force')) {
+        grantAccess();
+        return;
+      } else {
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Capture native beforeinstallprompt
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        if (installBtn) installBtn.style.display = 'block';
-        if (iosInstructions) iosInstructions.style.display = 'none';
-        if (defaultInstructions) defaultInstructions.style.display = 'none';
+        console.log('[NDS PWA] beforeinstallprompt event captured');
+        if (installBtnText) {
+          installBtnText.innerText = "Install App to Access Website";
+        }
       });
 
-      // Handle install button click -> Trigger install AND immediately open website!
+      // Handle install button click
       if (installBtn) {
         installBtn.addEventListener('click', async () => {
+          if (isInStandaloneMode()) {
+            grantAccess();
+            return;
+          }
+
+          // 1. If native install prompt is ready
           if (deferredPrompt) {
             try {
               deferredPrompt.prompt();
-              await deferredPrompt.userChoice;
-            } catch (e) {
-              console.log(e);
+              const choice = await deferredPrompt.userChoice;
+              deferredPrompt = null;
+              if (choice && choice.outcome === 'accepted') {
+                grantAccess();
+                return;
+              } else {
+                if (androidInstructions) androidInstructions.style.display = 'block';
+                return;
+              }
+            } catch(e) {
+              console.warn('Install prompt error:', e);
             }
-            deferredPrompt = null;
           }
-          // In all cases, open the website!
-          openWebsite();
+
+          // 2. iOS Safari
+          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          if (isIOS) {
+            if (androidInstructions) androidInstructions.style.display = 'none';
+            if (desktopInstructions) desktopInstructions.style.display = 'none';
+            if (iosInstructions) {
+              iosInstructions.style.display = 'block';
+              iosInstructions.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            return;
+          }
+
+          // 3. Android browser (fallback)
+          if (/android/i.test(navigator.userAgent)) {
+            if (iosInstructions) iosInstructions.style.display = 'none';
+            if (desktopInstructions) desktopInstructions.style.display = 'none';
+            if (androidInstructions) {
+              androidInstructions.style.display = 'block';
+              androidInstructions.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            return;
+          }
+
+          // 4. Desktop (Chrome, Edge, etc.)
+          if (desktopInstructions) {
+            if (iosInstructions) iosInstructions.style.display = 'none';
+            if (androidInstructions) androidInstructions.style.display = 'none';
+            desktopInstructions.style.display = 'block';
+            desktopInstructions.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
         });
       }
 
-      // Automatically open the website whenever the app finishes installing
+      // Listen for appinstalled event
       window.addEventListener('appinstalled', () => {
-        openWebsite();
+        console.log('[NDS PWA] App installed successfully');
+        grantAccess();
       });
 
-      // Action buttons to open website
-      if (openWebsiteBtn) openWebsiteBtn.addEventListener('click', openWebsite);
-      if (iosContinueBtn) iosContinueBtn.addEventListener('click', openWebsite);
-      if (fallbackOpenBtn) fallbackOpenBtn.addEventListener('click', openWebsite);
+      // Secondary & guide buttons to grant access
+      if (enterWebsiteBtn) enterWebsiteBtn.addEventListener('click', grantAccess);
+      if (iosContinueBtn) iosContinueBtn.addEventListener('click', grantAccess);
+      if (androidContinueBtn) androidContinueBtn.addEventListener('click', grantAccess);
+      if (desktopContinueBtn) desktopContinueBtn.addEventListener('click', grantAccess);
 
-      // Periodic check
+      // Periodic check if user switched into standalone app
       setInterval(() => {
-        if (isStandalone()) {
-          openWebsite();
+        if (isInStandaloneMode()) {
+          grantAccess();
         }
       }, 1000);
     })();

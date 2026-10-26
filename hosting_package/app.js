@@ -57,7 +57,7 @@ const dictionary = {
     's7-title': '7. MOFA Document Authentication', 's7-1': 'Ministry of Foreign Affairs Assistance', 's7-2': 'Document Authentication & Verification', 's7-3': 'Verification & Processing Guidance',
     's8-title': '8. Foreign Embassy Authentication', 's8-1': 'Embassy Authentication Assistance', 's8-2': 'Document Submission Support', 's8-3': 'Processing Guidance',
     's9-title': '9. Embassy & Consulate Support', 's9-1': 'Nigerian Embassy Coordination Support', 's9-2': 'Consular Documentation Assistance', 's9-3': 'Appointment & Service Guidance',
-    's10-title': '10. Court-Issued Documents', 's10-1': 'Affidavits & Court Certification Support', 's10-2': 'Application & Verification Support', 's10-3': 'Legal Documentation Guidance',
+    's10-title': '10. Legal Matter', 's10-1': 'Affidavits & Court Certification Support', 's10-2': 'Application & Verification Support', 's10-3': 'Legal Documentation Guidance',
     's11-title': '11. Business Contract Support', 's11-1': 'Business Contract Preparation Assist', 's11-2': 'Agreement Drafting Support', 's11-3': 'Local Business Documentation Setup',
     's12-title': '12. Labour & Agency Services', 's12-1': 'Labour Documentation Assistance', 's12-2': 'Employment Registry Support', 's12-3': 'Guidance & Compliance Checks',
     'how-title': 'How NDS Simplifies the Process', 'how-subtitle': 'Secure, fast, and structured in 4 simple stages',
@@ -399,6 +399,9 @@ function routeApp() {
     if (serviceName) {
       if (serviceName === 'Passport Services' || serviceName === 'NIN Services' || serviceName === 'BVN Services' || serviceName === 'Passport, NIN & BVN') {
         serviceName = 'Passport, NIN / BVN';
+      }
+      if (serviceName === 'Court Documents') {
+        serviceName = 'Legal Matter';
       }
       const selectElem = document.getElementById('apply-service');
       if (selectElem) {

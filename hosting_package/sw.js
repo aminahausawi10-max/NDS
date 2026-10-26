@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nds-pwa-cache-v2.0';
+const CACHE_NAME = 'nds-pwa-cache-v3.0';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -8,6 +8,7 @@ const ASSETS_TO_CACHE = [
   '/logo.png',
   '/icon-192.png',
   '/icon-512.png',
+  '/apple-touch-icon.png',
   '/logo_mofa.png',
   '/logo_police.png',
   '/logo_ndlea.png',

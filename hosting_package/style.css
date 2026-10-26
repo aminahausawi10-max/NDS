@@ -192,7 +192,7 @@ body {
   height: 56px;
   width: 56px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
   border: 2px solid rgba(230, 33, 23, 0.25);
   background: #ffffff;
   padding: 3px;

@@ -10,15 +10,31 @@ set_cors_headers();
 require_method('POST');
 
 $decoded = verify_request_token();
-if (!$decoded) {
-    json_response(['error' => 'Unauthorized. Please log in.'], 401);
-}
+$userId  = $decoded ? $userId : null;
 
 $body          = get_json_body();
+$fullName      = trim($body['fullName'] ?? 'Diaspora Applicant');
+$email         = trim($body['email'] ?? '');
+$phone         = trim($body['phone'] ?? '+966566029046');
 $serviceRequired = trim($body['serviceRequired'] ?? '');
 $description   = trim($body['description'] ?? '');
-$contactMethod = trim($body['contactMethod'] ?? 'Email');
+$contactMethod = trim($body['contactMethod'] ?? 'WhatsApp');
 $documents     = json_encode($body['documents'] ?? []);
+
+if (!$userId) {
+    $guestEmail = !empty($email) ? strtolower($email) : ('guest_' . time() . '@nds.org');
+    $db = getDB();
+    $stmt = $db->prepare('SELECT id FROM users WHERE email = ? OR phone = ? LIMIT 1');
+    $stmt->execute([$guestEmail, $phone]);
+    $existing = $stmt->fetch();
+    if ($existing) {
+        $userId = $existing['id'];
+    } else {
+        $stmt = $db->prepare('INSERT INTO users (full_name, email, phone, country, state_origin, password, is_admin) VALUES (?, ?, ?, ?, ?, ?, 0)');
+        $stmt->execute([$fullName, $guestEmail, $phone, 'Diaspora', 'Nigeria', 'guest_free']);
+        $userId = $db->lastInsertId();
+    }
+}
 
 if (!$serviceRequired) {
     json_response(['error' => 'Service required is missing'], 400);
@@ -43,7 +59,7 @@ try {
     );
     $stmt->execute([
         $referenceNumber,
-        $decoded['userId'],
+        $userId,
         $serviceRequired,
         $description,
         $contactMethod,

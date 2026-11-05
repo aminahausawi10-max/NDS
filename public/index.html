@@ -31,7 +31,7 @@
   <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=2.0">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css?v=15.0">
+  <link rel="stylesheet" href="style.css?v=16.0">
   <!-- Instant PWA Mode Check -->
   <script>
     (function() {
@@ -555,45 +555,70 @@
     <!-- 5. Apply Now Section -->
     <section id="apply" class="page-view">
       <div class="apply-container glass-panel">
-        <h2 data-key="apply-head">Start Your Application</h2>
-        <p class="subtitle" data-key="apply-sub">Submit your details and support files securely. Ensure you are signed in first.</p>
+        <h2 data-key="apply-head">Start Your Free Application</h2>
+        <p class="subtitle" data-key="apply-sub">100% Free Consultation & Documentation Support — No Sign-In Required.</p>
         
-        <div id="apply-auth-alert" class="alert-box alert-warning">
-          <i class="fa-solid fa-lock"></i>
-          <span>You must be signed in to submit an application. <a href="javascript:void(0)" onclick="openAuthModal()" class="text-gold font-bold">Click here to sign in or create an account.</a></span>
+        <!-- 100% Free & No Sign-In Required Banner -->
+        <div class="free-badge-banner" style="display:flex; align-items:center; gap:14px; background:rgba(0,135,81,0.08); border:1.5px solid #008751; color:#008751; padding:16px 20px; border-radius:14px; margin-bottom:24px;">
+          <div style="width:44px; height:44px; border-radius:12px; background:#008751; color:#ffffff; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <i class="fa-solid fa-gift" style="font-size:20px;"></i>
+          </div>
+          <div style="flex:1;">
+            <strong style="display:block; font-size:16px; margin-bottom:3px; color:#008751;">100% Free Service — No Sign-In or Registration Required</strong>
+            <span style="font-size:13.5px; color:var(--text-secondary, #4b5563); line-height:1.4; display:block;">Fill in your details below to apply for free, or chat with our diaspora support team directly on WhatsApp at <strong style="color:#008751;">+966 56 602 9046</strong>.</span>
+          </div>
+          <a href="https://wa.me/966566029046" target="_blank" class="btn-glass" style="background:#25d366; color:#ffffff; border:none; padding:10px 16px; border-radius:10px; font-weight:700; font-size:13px; display:inline-flex; align-items:center; gap:6px; white-space:nowrap;">
+            <i class="fa-brands fa-whatsapp"></i> Chat Now
+          </a>
         </div>
 
-        <form id="apply-form" onsubmit="handleApplySubmit(event)" style="display: none;">
+        <form id="apply-form" onsubmit="handleApplySubmit(event)" style="display: block;">
           <div class="form-row">
             <div class="form-group">
-              <label for="apply-service" data-key="lbl-service">Service Required *</label>
-              <select id="apply-service" required>
-                <option value="MOFA Authentication">MOFA Document Authentication</option>
-                <option value="NiDCOM Support">NiDCOM - Nigerians in Diaspora Commission</option>
-                <option value="Embassy Authentication">Foreign Documents Assistant (Embassy)</option>
-                <option value="Passport, NIN / BVN">Passport, NIN / BVN Support</option>
-                <option value="Passport, NIN & BVN" style="display:none;">Passport, NIN &amp; BVN Support</option>
-                <option value="Police Clearance">Police Clearance</option>
-                <option value="NDLEA Certificate">NDLEA Clearance</option>
-                <option value="CAC Services">CAC Corporate Registration</option>
-                <option value="Legal Matter">Legal Matter</option>
-                <option value="Court Documents" style="display:none;">Legal Matter</option>
-                <option value="Labour Services">Labour Assistant</option>
-                <option value="Contract Support">Properties Assistant</option>
-                <!-- Legacy mappings for backward compatibility -->
-                <option value="Passport Services" style="display:none;">Nigerian Passport Services</option>
-                <option value="NIN Services" style="display:none;">National Identification Number (NIN)</option>
-                <option value="BVN Services" style="display:none;">Bank Verification Number (BVN)</option>
-              </select>
+              <label for="apply-name"><i class="fa-solid fa-user"></i> Full Name *</label>
+              <input type="text" id="apply-name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="apply-phone"><i class="fa-brands fa-whatsapp" style="color:#25d366;"></i> WhatsApp / Phone Number *</label>
+              <input type="tel" id="apply-phone" placeholder="e.g. +966 56 602 9046" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="apply-email"><i class="fa-solid fa-envelope"></i> Email Address (Optional)</label>
+              <input type="email" id="apply-email" placeholder="e.g. name@example.com (optional)">
             </div>
             <div class="form-group">
               <label for="apply-contact" data-key="lbl-contact">Preferred Contact Method *</label>
               <select id="apply-contact" required>
-                <option value="WhatsApp">WhatsApp</option>
-                <option value="Email">Email</option>
+                <option value="WhatsApp" selected>WhatsApp (+966 56 602 9046)</option>
                 <option value="Phone Call">Phone Call</option>
+                <option value="Email">Email</option>
               </select>
             </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-service" data-key="lbl-service">Service Required *</label>
+            <select id="apply-service" required>
+              <option value="MOFA Authentication">MOFA Document Authentication</option>
+              <option value="NiDCOM Support">NiDCOM - Nigerians in Diaspora Commission</option>
+              <option value="Embassy Authentication">Foreign Documents Assistant (Embassy)</option>
+              <option value="Passport, NIN / BVN">Passport, NIN / BVN Support</option>
+              <option value="Passport, NIN & BVN" style="display:none;">Passport, NIN &amp; BVN Support</option>
+              <option value="Police Clearance">Police Clearance</option>
+              <option value="NDLEA Certificate">NDLEA Clearance</option>
+              <option value="CAC Services">CAC Corporate Registration</option>
+              <option value="Legal Matter">Legal Matter</option>
+              <option value="Court Documents" style="display:none;">Legal Matter</option>
+              <option value="Labour Services">Labour Assistant</option>
+              <option value="Contract Support">Properties Assistant</option>
+              <!-- Legacy mappings for backward compatibility -->
+              <option value="Passport Services" style="display:none;">Nigerian Passport Services</option>
+              <option value="NIN Services" style="display:none;">National Identification Number (NIN)</option>
+              <option value="BVN Services" style="display:none;">Bank Verification Number (BVN)</option>
+            </select>
           </div>
 
           <div class="form-group">
@@ -601,35 +626,44 @@
             <textarea id="apply-desc" rows="4" placeholder="State your requirements, renewal reason, corporate names, or changes requested..." required></textarea>
           </div>
 
-          <!-- Document Upload Box (Simulated to Cloudinary via API) -->
+          <!-- Document Upload Box (Optional for free quick application) -->
           <div class="form-group">
-            <label data-key="lbl-files">Upload Supporting Identification / Scans *</label>
+            <label data-key="lbl-files">Upload Supporting Identification / Scans (Optional)</label>
             <div class="file-drop-area glass-panel" id="file-drop-area">
               <i class="fa-solid fa-cloud-arrow-up"></i>
-              <p><span data-key="upload-click">Click to browse</span> or drag & drop files here</p>
+              <p><span data-key="upload-click">Click to browse</span> or drag & drop files here (Optional)</p>
               <input type="file" id="apply-files" multiple onchange="handleFileSelect(event)">
               <div id="file-list-preview" class="file-list-preview"></div>
             </div>
           </div>
 
-          <button type="submit" class="btn-primary w-100" id="apply-submit-btn">
-            <i class="fa-solid fa-paper-plane"></i> <span data-key="btn-submit-app">Submit Application</span>
-          </button>
+          <div class="apply-actions-row" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:20px;">
+            <button type="submit" class="btn-primary" id="apply-submit-btn" style="flex:1; min-width:230px;">
+              <i class="fa-solid fa-paper-plane"></i> <span data-key="btn-submit-app">Submit Free Application</span>
+            </button>
+            <button type="button" class="btn-glass" onclick="applyViaWhatsApp()" style="flex:1; min-width:230px; background:#25d366; color:#ffffff; border:none; font-weight:700; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 20px; border-radius:10px; cursor:pointer;">
+              <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i> Apply Directly on WhatsApp
+            </button>
+          </div>
         </form>
 
         <!-- Application Success / Receipt Panel -->
         <div id="apply-success-panel" class="success-panel text-center" style="display: none;">
           <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
-          <h3 data-key="success-headline">Submission Received!</h3>
-          <p data-key="success-body">Your request is queued and our admin team will review it shortly. Save your reference number to track live milestones.</p>
+          <h3 data-key="success-headline">Free Application Submitted!</h3>
+          <p data-key="success-body">Your request has been received free of charge. Save your reference number to track live milestones, or chat with our team directly on WhatsApp.</p>
           <div class="reference-number-badge">
             <span id="created-ref-num">NDS-2026-000000</span>
             <button onclick="copyRefText()" title="Copy Reference"><i class="fa-solid fa-copy"></i></button>
           </div>
-          <p class="text-sm text-dimmed">Confirmation receipt sent to your profile inbox.</p>
-          <div class="success-actions">
+          <div style="margin:18px 0;">
+            <a id="apply-success-wa-btn" href="https://wa.me/966566029046" target="_blank" class="btn-primary" style="background:#25d366; border-color:#25d366; color:#ffffff; display:inline-flex; align-items:center; gap:8px; padding:12px 24px; font-weight:700; text-decoration:none; border-radius:10px;">
+              <i class="fa-brands fa-whatsapp" style="font-size:20px;"></i> Chat on WhatsApp with Reference
+            </a>
+          </div>
+          <div class="success-actions" style="margin-top:14px;">
             <a href="#track" class="btn-primary" data-key="btn-track-go">Track Application</a>
-            <a href="#portal" class="btn-glass" data-key="btn-portal-go">Go to Portal</a>
+            <a href="#home" class="btn-glass">Back to Home</a>
           </div>
         </div>
       </div>
@@ -749,11 +783,11 @@
         </div>
         <div class="faq-item glass-panel">
           <button class="faq-question">
-            <span data-key="faq-q4">Are you a government agency?</span>
+            <span data-key="faq-q4">Is NDS assistance free and do I need to sign in?</span>
             <i class="fa-solid fa-plus"></i>
           </button>
           <div class="faq-answer">
-            <p data-key="faq-a4">No. NDS is a privately managed consulting assistance network. We charge handling/processing fees to support compiling, dispatching, and following up on files at ministries and consulates.</p>
+            <p data-key="faq-a4">Yes! Consultation, guidance, and application assistance with NDS are 100% free with NO sign-in or account required. You can apply directly online or reach us anytime on WhatsApp at +966 56 602 9046.</p>
           </div>
         </div>
       </div>
@@ -801,10 +835,10 @@
             </div>
 
             <div class="method-item">
-              <div class="method-icon-box"><i class="fa-solid fa-phone-volume"></i></div>
+              <div class="method-icon-box"><i class="fa-brands fa-whatsapp" style="color:#25d366; font-size: 22px;"></i></div>
               <div class="method-text">
-                 <h5>Call & WhatsApp Hotline</h5>
-                 <p><a href="tel:+2348057300300">+234 805 730 0300</a></p>
+                 <h5>WhatsApp & Phone Hotline (Free Support)</h5>
+                 <p><a href="https://wa.me/966566029046" target="_blank" style="color:var(--accent); font-weight:700;">+966 56 602 9046</a> (<a href="tel:+966566029046">Call</a> | <a href="https://wa.me/966566029046" target="_blank">Chat on WhatsApp</a>)</p>
               </div>
             </div>
 
@@ -849,7 +883,7 @@
               </div>
               <div class="form-group">
                 <label for="c-phone"><i class="fa-solid fa-phone"></i> Phone / WhatsApp</label>
-                <input type="tel" id="c-phone" placeholder="+44 / +1 / +234...">
+                <input type="tel" id="c-phone" placeholder="+966 56 602 9046">
               </div>
             </div>
 
@@ -1284,7 +1318,7 @@
                 <form id="admin-contact-config-form" onsubmit="event.preventDefault(); alert('Helpdesk parameters updated in UI!');">
                   <div class="form-group">
                     <label>WhatsApp Integration Mobile Number</label>
-                    <input type="text" value="+234 704 700 0070">
+                    <input type="text" value="+966 56 602 9046">
                   </div>
                   <div class="form-group">
                     <label>Assigned Support Email</label>
@@ -1351,7 +1385,7 @@
           <div class="form-row">
             <div class="form-group">
               <label for="reg-phone">Phone Number *</label>
-              <input type="text" id="reg-phone" placeholder="+44 7911 123456" required>
+              <input type="text" id="reg-phone" placeholder="+966 56 602 9046" required>
             </div>
             <div class="form-group">
               <label for="reg-country">Country of Residence *</label>
@@ -1398,7 +1432,7 @@
       <div class="admin-detail-row mt-15">
         <div>
           <h5 class="text-dimmed text-sm">Customer Details</h5>
-          <p id="admin-detail-user">John Doe (+44 7911 123456)</p>
+          <p id="admin-detail-user">John Doe (+966 56 602 9046)</p>
           <p id="admin-detail-email" class="text-sm text-dimmed">john@example.com</p>
         </div>
         <div>
@@ -1455,7 +1489,7 @@
   </div>
 
   <!-- WhatsApp Floating Sticky Button -->
-  <a href="https://wa.me/2348057300300?text=Hello%20Nigeria%20Diaspora%20Services,%20I%20have%20an%20enquiry..." target="_blank" class="whatsapp-floating" title="Chat with NDS support on WhatsApp">
+  <a href="https://wa.me/966566029046?text=Hello%20Nigeria%20Diaspora%20Services,%20I%20have%20an%20enquiry..." target="_blank" class="whatsapp-floating" title="Chat with NDS support on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
     <span class="whatsapp-label">Chat With Us</span>
   </a>
@@ -1480,7 +1514,7 @@
   </div>
 
   <!-- Core Javascript -->
-  <script src="app.js?v=2.5"></script>
+  <script src="app.js?v=3.0"></script>
   
   <!-- PWA Service Worker Registration & Install Gate Logic -->
   <script>

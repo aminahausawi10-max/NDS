@@ -21,10 +21,8 @@ module.exports = async (req, res) => {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Authentication is optional: guest uploads are allowed for free support
   const decoded = verifyToken(req);
-  if (!decoded) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
 
   try {
     const { fileData, fileName } = req.body;

@@ -9,10 +9,8 @@ require_once __DIR__ . '/config/jwt.php';
 set_cors_headers();
 require_method('POST');
 
+// Authentication is optional for free document applications
 $decoded = verify_request_token();
-if (!$decoded) {
-    json_response(['error' => 'Unauthorized'], 401);
-}
 
 $body     = get_json_body();
 $fileData = $body['fileData'] ?? '';

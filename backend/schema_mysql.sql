@@ -47,7 +47,7 @@ INSERT IGNORE INTO `users` (`full_name`, `email`, `phone`, `country`, `state_ori
 VALUES (
     'NDS Admin',
     'admin@nds.com',
-    '+2348057300300',
+    '+966566029046',
     'Nigeria',
     'Abuja',
     '$2y$10$hkrmryU/kGdT9tHLO5HoLevyYTz4P1qzMiE6bBVHHzHt7R7O68R.e',

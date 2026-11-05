@@ -41,5 +41,5 @@ CREATE TABLE IF NOT EXISTS messages (
 
 -- 4. Create Default Admin User Account (Email: admin@nds.com | Password: password123)
 INSERT INTO users (full_name, email, phone, country, state_origin, password, is_admin)
-VALUES ('NDS Admin', 'admin@nds.com', '+2348057300300', 'Nigeria', 'Abuja', '$2a$10$7/h6QFoojL5zZ.4I92kXfuxvcQNhJZk/znEOxCtIdb..3rxloHv9G', 1)
+VALUES ('NDS Admin', 'admin@nds.com', '+966566029046', 'Nigeria', 'Abuja', '$2a$10$7/h6QFoojL5zZ.4I92kXfuxvcQNhJZk/znEOxCtIdb..3rxloHv9G', 1)
 ON DUPLICATE KEY UPDATE full_name=full_name;

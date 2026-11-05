@@ -22,7 +22,7 @@ try {
 
     $sql    = 'SELECT a.*, u.full_name, u.email, u.phone
                FROM applications a
-               JOIN users u ON a.user_id = u.id
+               LEFT JOIN users u ON a.user_id = u.id
                WHERE a.reference_number = ?';
     $params = [$referenceNumber];
 

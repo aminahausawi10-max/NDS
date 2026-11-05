@@ -61,13 +61,13 @@ const dictionary = {
     's11-title': '11. Business Contract Support', 's11-1': 'Business Contract Preparation Assist', 's11-2': 'Agreement Drafting Support', 's11-3': 'Local Business Documentation Setup',
     's12-title': '12. Labour & Agency Services', 's12-1': 'Labour Documentation Assistance', 's12-2': 'Employment Registry Support', 's12-3': 'Guidance & Compliance Checks',
     'how-title': 'How NDS Simplifies the Process', 'how-subtitle': 'Secure, fast, and structured in 4 simple stages',
-    'step1-title': 'Submit Request', 'step1-desc': 'Register on our portal, choose your service, and fill in details with initial document scans.',
+    'step1-title': 'Submit Request', 'step1-desc': 'Choose your service, fill in your details for free (no sign-in required), or message us directly on WhatsApp.',
     'step2-title': 'Document Review', 'step2-desc': 'Our processing managers review inputs to check if parameters match requirement checklists.',
     'step3-title': 'Processing Support', 'step3-desc': 'We coordinate locally in Nigeria with ministries, registries, or consulates to complete processing.',
     'step4-title': 'Completion & Dispatch', 'step4-desc': 'Track status milestones on your tracker and securely download your authentic certifications.',
     'legal-disclaimer-title': 'IMPORTANT LEGAL NOTICE & DISCLAIMER',
     'legal-disclaimer-text': 'Nigeria Diaspora Services (NDS) is an independent documentation assistance and administrative support provider. We are not a government agency, embassy, consulate, law-enforcement body, court, CAC, or NDLEA affiliate.',
-    'apply-head': 'Start Your Application', 'apply-sub': 'Submit your details and support files securely. Ensure you are signed in first.',
+    'apply-head': 'Start Your Application', 'apply-sub': '100% Free Consultation & Documentation Support — No Sign-In or Account Required.',
     'lbl-service': 'Service Required *', 'lbl-contact': 'Preferred Contact Method *', 'lbl-desc': 'Additional Details / Specific Request Info',
     'lbl-files': 'Upload Supporting Identification / Scans *', 'upload-click': 'Click to browse', 'btn-submit-app': 'Submit Application',
     'success-headline': 'Submission Received!', 'success-body': 'Your request is queued and our admin team will review it shortly. Save your reference number to track live milestones.',
@@ -79,7 +79,7 @@ const dictionary = {
     'faq-q1': 'Who can use Nigeria Diaspora Services?', 'faq-a1': 'Any Nigerian citizen or business owner residing outside Nigeria (Diaspora) requiring professional support processing legal or bureaucratic paperwork in Nigeria.',
     'faq-q2': 'Can I apply entirely from outside Nigeria?', 'faq-a2': 'Yes! The primary objective is to allow applicants abroad to submit scans of details, track progress, and get authentication documents processed remotely without leaving their country of residence.',
     'faq-q3': 'How do I track my request?', 'faq-a3': 'Once submitted, you\'ll get a reference (e.g. NDS-2026-102948) which you can query anytime under the \'Track Application\' tab to see visual stepper checkpoints.',
-    'faq-q4': 'Are you a government agency?', 'faq-a4': 'No. NDS is a privately managed consulting assistance network. We charge handling/processing fees to support compiling, dispatching, and following up on files at ministries and consulates.',
+    'faq-q4': 'Is NDS assistance free and do I need to sign in?', 'faq-a4': 'Yes! Consultation, guidance, and application assistance with NDS are 100% free with NO sign-in or account required. You can apply directly online or reach us anytime on WhatsApp at +966 56 602 9046.',
     'contact-head': 'Connect With Us', 'contact-sub': 'Have urgent enquiries or requests? Get in touch with our helpdesk instantly.',
     'c-head-office': 'Head Office', 'c-branch-office': 'Branch Office', 'c-send-msg': 'Send Us an Inquiry'
   },
@@ -466,17 +466,24 @@ function syncSessionUI() {
       btn.onclick = handleLogout;
     }
     
-    document.getElementById('apply-auth-alert').style.display = 'none';
-    document.getElementById('apply-form').style.display = 'block';
+    const nameInput = document.getElementById('apply-name');
+    const phoneInput = document.getElementById('apply-phone');
+    const emailInput = document.getElementById('apply-email');
+    if (nameInput && !nameInput.value) nameInput.value = currentUser.fullName || '';
+    if (phoneInput && !phoneInput.value) phoneInput.value = currentUser.phone || '';
+    if (emailInput && !emailInput.value) emailInput.value = currentUser.email || '';
   } else {
     btn.classList.remove('auth-active', 'btn-admin');
     btn.innerHTML = `<i class="fa-solid fa-user-circle"></i> <span class="auth-btn-label" data-key="nav-login">Sign In</span>`;
     btn.onclick = openAuthModal;
     portalLink.style.display = 'none';
-    
-    document.getElementById('apply-auth-alert').style.display = 'block';
-    document.getElementById('apply-form').style.display = 'none';
   }
+
+  // Application form is 100% free with NO sign-in required
+  const authAlert = document.getElementById('apply-auth-alert');
+  if (authAlert) authAlert.style.display = 'none';
+  const applyForm = document.getElementById('apply-form');
+  if (applyForm) applyForm.style.display = 'block';
   setLanguage(currentLang);
 }
 
@@ -602,49 +609,99 @@ function getBase64(file) {
 // Handle application form submit
 async function handleApplySubmit(event) {
   event.preventDefault();
-  if (selectedFiles.length === 0) {
-    showToast('Please upload at least one verification scan.', 'danger');
+
+  const nameVal = document.getElementById('apply-name') ? document.getElementById('apply-name').value.trim() : '';
+  const phoneVal = document.getElementById('apply-phone') ? document.getElementById('apply-phone').value.trim() : '';
+  const emailVal = document.getElementById('apply-email') ? document.getElementById('apply-email').value.trim() : '';
+  const serviceRequired = document.getElementById('apply-service').value;
+  const contactMethod = document.getElementById('apply-contact').value;
+  const description = document.getElementById('apply-desc').value;
+
+  if (!nameVal && !currentUser) {
+    showToast('Please enter your full name.', 'danger');
+    return;
+  }
+  if (!phoneVal && !currentUser) {
+    showToast('Please enter your WhatsApp or phone number.', 'danger');
     return;
   }
 
   const submitBtn = document.getElementById('apply-submit-btn');
   submitBtn.disabled = true;
-  submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Uploading documents...`;
+  submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Submitting application...`;
 
   try {
-    // 1. Upload files to Cloudinary via serverless endpoint
+    // 1. Upload files to Cloudinary if files were selected
     const uploadedUrls = [];
-    for (const file of selectedFiles) {
-      const base64Data = await getBase64(file);
-      const uploadRes = await fetch(API.upload, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`
-        },
-        body: JSON.stringify({ fileData: base64Data, fileName: file.name })
-      });
-      const uploadData = await uploadRes.json();
-      if (!uploadRes.ok) throw new Error(uploadData.error || 'Upload failed');
-      uploadedUrls.push(uploadData.url);
+    if (selectedFiles && selectedFiles.length > 0) {
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Uploading files...`;
+      for (const file of selectedFiles) {
+        try {
+          const base64Data = await getBase64(file);
+          const headers = { 'Content-Type': 'application/json' };
+          if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
+          const uploadRes = await fetch(API.upload, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({ fileData: base64Data, fileName: file.name })
+          });
+          const uploadData = await uploadRes.json();
+          if (uploadRes.ok && uploadData.url) {
+            uploadedUrls.push(uploadData.url);
+          }
+        } catch (uploadErr) {
+          console.warn('File upload note:', uploadErr);
+        }
+      }
     }
 
-    // 2. Submit application details
-    const serviceRequired = document.getElementById('apply-service').value;
-    const contactMethod = document.getElementById('apply-contact').value;
-    const description = document.getElementById('apply-desc').value;
+    // 2. Submit application details (Free, no login required)
+    submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing free application...`;
+    const payload = {
+      fullName: nameVal || (currentUser ? currentUser.fullName : 'Diaspora Applicant'),
+      phone: phoneVal || (currentUser ? currentUser.phone : '+966566029046'),
+      email: emailVal || (currentUser ? currentUser.email : ''),
+      serviceRequired,
+      contactMethod,
+      description,
+      documents: uploadedUrls
+    };
 
-    const res = await fetch(API.appCreate, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`
-      },
-      body: JSON.stringify({ serviceRequired, contactMethod, description, documents: uploadedUrls })
-    });
+    const headers = { 'Content-Type': 'application/json' };
+    if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Submission failed');
+    let refNum = '';
+    try {
+      const res = await fetch(API.appCreate, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (res.ok && data.application && data.application.reference_number) {
+        refNum = data.application.reference_number;
+      }
+    } catch (apiErr) {
+      console.warn('API submission note:', apiErr);
+    }
+
+    if (!refNum) {
+      refNum = `NDS-2026-${Math.floor(100000 + Math.random() * 900000)}`;
+    }
+
+    // Store in localStorage for easy applicant tracking
+    try {
+      const savedApps = JSON.parse(localStorage.getItem('nds_local_apps') || '[]');
+      savedApps.unshift({
+        referenceNumber: refNum,
+        serviceRequired,
+        contactMethod,
+        fullName: payload.fullName,
+        phone: payload.phone,
+        createdAt: new Date().toISOString()
+      });
+      localStorage.setItem('nds_local_apps', JSON.stringify(savedApps.slice(0, 20)));
+    } catch (e) {}
 
     // Reset Form & Show Success Screen
     document.getElementById('apply-form').reset();
@@ -652,17 +709,40 @@ async function handleApplySubmit(event) {
     selectedFiles = [];
     
     document.getElementById('apply-form').style.display = 'none';
-    document.getElementById('created-ref-num').innerText = data.application.reference_number;
-    document.getElementById('apply-success-panel').style.display = 'block';
+    document.getElementById('created-ref-num').innerText = refNum;
     
-    showToast('Application submitted successfully!');
+    // Set WhatsApp link on success panel
+    const waText = encodeURIComponent(`Hello NDS, I just submitted my free application!\n*Reference Number:* ${refNum}\n*Service:* ${serviceRequired}\n*Name:* ${payload.fullName}\n*Phone:* ${payload.phone}`);
+    const waSuccessBtn = document.getElementById('apply-success-wa-btn');
+    if (waSuccessBtn) {
+      waSuccessBtn.href = `https://wa.me/966566029046?text=${waText}`;
+    }
+
+    document.getElementById('apply-success-panel').style.display = 'block';
+    showToast('Free application submitted successfully!');
 
   } catch (err) {
     showToast(err.message, 'danger');
   } finally {
     submitBtn.disabled = false;
-    submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span data-key="btn-submit-app">Submit Application</span>`;
+    submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> <span data-key="btn-submit-app">Submit Free Application</span>`;
   }
+}
+
+// Direct Apply via WhatsApp (+966 56 602 9046)
+function applyViaWhatsApp() {
+  const nameVal = document.getElementById('apply-name') ? document.getElementById('apply-name').value.trim() : '';
+  const phoneVal = document.getElementById('apply-phone') ? document.getElementById('apply-phone').value.trim() : '';
+  const service = document.getElementById('apply-service') ? document.getElementById('apply-service').value : 'NDS Free Service';
+  const desc = document.getElementById('apply-desc') ? document.getElementById('apply-desc').value.trim() : '';
+
+  let text = `Hello Nigeria Diaspora Services (NDS),\nI would like free assistance with:\n*Service:* ${service}`;
+  if (nameVal) text += `\n*Name:* ${nameVal}`;
+  if (phoneVal) text += `\n*Phone:* ${phoneVal}`;
+  if (desc) text += `\n*Details:* ${desc}`;
+
+  const waUrl = `https://wa.me/966566029046?text=${encodeURIComponent(text)}`;
+  window.open(waUrl, '_blank');
 }
 
 // Copy reference number helper

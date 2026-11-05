@@ -415,6 +415,8 @@ function routeApp() {
     loadPortalData();
   } else if (cleanHash === '#admin-dashboard') {
     loadAdminDashboard();
+  } else if (cleanHash === '#login' || cleanHash === '#admin') {
+    openAuthModal();
   }
 
   // Show or hide bottom nav depending on active portal/dashboard views
@@ -452,19 +454,21 @@ function syncSessionUI() {
   const portalLink = document.getElementById('floating-portal-link');
   
   if (authToken && currentUser) {
-    btn.classList.add('auth-active');
-    portalLink.style.display = 'flex';
-    
-    // Check if admin
-    if (currentUser.isAdmin) {
-      btn.classList.add('btn-admin');
-      btn.innerHTML = `<i class="fa-solid fa-user-shield"></i> <span class="auth-btn-label">Admin</span>`;
-      btn.onclick = () => { window.location.hash = '#admin-dashboard'; };
-    } else {
-      btn.classList.remove('btn-admin');
-      btn.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i> <span class="auth-btn-label">Sign Out</span>`;
-      btn.onclick = handleLogout;
+    if (btn) {
+      btn.style.display = 'inline-flex';
+      btn.classList.add('auth-active');
+      // Check if admin
+      if (currentUser.isAdmin) {
+        btn.classList.add('btn-admin');
+        btn.innerHTML = `<i class="fa-solid fa-user-shield"></i> <span class="auth-btn-label">Admin</span>`;
+        btn.onclick = () => { window.location.hash = '#admin-dashboard'; };
+      } else {
+        btn.classList.remove('btn-admin');
+        btn.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i> <span class="auth-btn-label">Sign Out</span>`;
+        btn.onclick = handleLogout;
+      }
     }
+    if (portalLink) portalLink.style.display = 'flex';
     
     const nameInput = document.getElementById('apply-name');
     const phoneInput = document.getElementById('apply-phone');
@@ -473,10 +477,11 @@ function syncSessionUI() {
     if (phoneInput && !phoneInput.value) phoneInput.value = currentUser.phone || '';
     if (emailInput && !emailInput.value) emailInput.value = currentUser.email || '';
   } else {
-    btn.classList.remove('auth-active', 'btn-admin');
-    btn.innerHTML = `<i class="fa-solid fa-user-circle"></i> <span class="auth-btn-label" data-key="nav-login">Sign In</span>`;
-    btn.onclick = openAuthModal;
-    portalLink.style.display = 'none';
+    if (btn) {
+      btn.style.display = 'none';
+      btn.classList.remove('auth-active', 'btn-admin');
+    }
+    if (portalLink) portalLink.style.display = 'none';
   }
 
   // Application form is 100% free with NO sign-in required
